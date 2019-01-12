@@ -3,8 +3,9 @@ from chatbot.stt.speech_recognizer import SpeechRecognizer
 from chatbot.tts.speech_agent import SpeechAgent
 # from chatbot.dialogue.dialogue_manager import DialogueManager
 import logging
-from dialogue_act.dialogue_mgt import DialogueActManager
-
+#from dialogue_act.dialogue_mgt import DialogueActManager
+from dialogue_act.dialogue_act import DialogueAct
+from chatbot.parser.text_parser import TextParser
 class ChatBotAgent:
     def __init__(self):
         """
@@ -22,11 +23,10 @@ class ChatBotAgent:
         # instance initialization
         # bot = ChatBotAgent()
         # dmngr = DialogueManager()
-        da = DialogueActManager()
-
+        da = DialogueAct()
+        parser = TextParser()
         listener, speaker = self.init_agents()
 
-        bot_name = "angle"
         wakeup_words = ["hey",  "hi", "hello"]
         end_converstion_words = ["bye", "bye bye", "goodbye", "see you"]
         greeting = False
@@ -39,13 +39,30 @@ class ChatBotAgent:
                     greeting = True
                     speaker.speak(greeting_msg)
 
-                # Listen voice from microphone
-                text = listener.listen()
-
-                if text in end_converstion_words:
-                    speaker.speak(goodbye_msg)
+                # Listen voice from microphone and generate text.
+                #text = listener.listen()
+                #text = "Do you have any recommended books written by J k rowling"
+                #text = "I would like to read books about psychology, do you have any recommendation"
+                text = "Do you have any recommended books in psychological category"
+                # Check text with trained model for dialogue act.
+                da_result = da.predict(text);
+                print("DA type --> ", da_result)
+                
+                if da_result == "whQuestion" or da_result == "ynQuestion":
+                    # Analyze entity in question find subject, predicate, object
+                    # Query in ontology by SPARQL 
+                    # Generate sentence
+                    parser.get_dependency_parsing(text)
+                    parser.generate_response(text)
+                
+                # If type is end of conversation, stop program.
+                if da_result == "Bye":
+                    response_msg = da.respond(text)
+                    speaker.speak(response_msg)
                     break;
-
+                
+                # Problem, when there is no voice come, it returns error.
+                # So we handle by continue
                 # Continue next loop if Error is returned.
                 if text == "Error":
                     continue

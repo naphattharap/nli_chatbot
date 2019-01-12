@@ -246,7 +246,7 @@
 		</Post>
 		<Post class="ynQuestion" user="10-26-teensUser77">homophobic?<terminals>
 				<t pos="NN" word="homophobic"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="10-26-teensUser85">HEY 10-26-teensUser86. INTERESTING NAME<terminals>
@@ -481,7 +481,7 @@
 				<t pos="VBP" word="like"/>
 				<t pos="," word=","/>
 				<t pos="NNP" word="10-26-teensUser86"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="10-26-teensUser91">Hey everyone<terminals>
@@ -558,7 +558,7 @@
 				<t pos="IN" word="in"/>
 				<t pos="DT" word="this"/>
 				<t pos="NN" word="room"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser58">.ACTION sits on the couch but completly misses it and hits the floor.<terminals>
@@ -676,13 +676,13 @@
 				<t pos="CD" word="two"/>
 				<t pos="JJ" word="left"/>
 				<t pos="NNS" word="feet"/>
-				<t pos="." word="?"/>
+				
 				<t pos="WP" word="what"/>
 				<t pos="RB" word="kinda"/>
 				<t pos="NN" word="music"/>
 				<t pos="PRP" word="you"/>
 				<t pos="IN" word="into"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser82">PART<terminals>
@@ -726,7 +726,7 @@
 				<t pos="IN" word="with"/>
 				<t pos="PRP$" word="their"/>
 				<t pos="NNS" word="cereals"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser31">PART<terminals>
@@ -750,7 +750,7 @@
 				<t pos="IN" word="of"/>
 				<t pos="NNP" word="sevendust"/>
 				<t pos="IN" word="before"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="10-26-teensUser91">and has anybody actually played them?<terminals>
@@ -760,7 +760,7 @@
 				<t pos="RB" word="actually"/>
 				<t pos="VBN" word="played"/>
 				<t pos="PRP" word="them"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser12">JOIN<terminals>
@@ -846,7 +846,7 @@
 				<t pos="NNS" word="girls"/>
 				<t pos="VBP" word="wanna"/>
 				<t pos="VB" word="chat"/>
-				<t pos="." word="?"/>
+				
 				<t pos="VB" word="pm"/>
 				<t pos="PRP" word="me"/>
 			</terminals>
@@ -901,7 +901,7 @@
 				<t pos="PRP" word="you"/>
 				<t pos="VBP" word="like"/>
 				<t pos="NNP" word="10-26-teensUser86"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser66">I have no handheld games <terminals>
@@ -1085,7 +1085,7 @@
 				<t pos="VBD" word="heard"/>
 				<t pos="IN" word="of"/>
 				<t pos="NNP" word="gamefly"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser2">PART<terminals>
@@ -1211,7 +1211,7 @@
 		<Post class="whQuestion" user="10-26-teensUser85">remember what?<terminals>
 				<t pos="VBP" word="remember"/>
 				<t pos="WP" word="what"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser86">game fly<terminals>
@@ -1612,7 +1612,7 @@
 				<t pos="PRP" word="you"/>
 				<t pos="DT" word="a"/>
 				<t pos="NN" word="girl"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser66">like Silent Hill, Clock Tower and Resident Evil<terminals>
@@ -1743,7 +1743,7 @@
 		<Post class="whQuestion" user="10-26-teensUser66">Nice what?<terminals>
 				<t pos="JJ" word="Nice"/>
 				<t pos="WP" word="what"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="10-26-teensUser110">JOIN<terminals>
@@ -1943,7 +1943,7 @@
 				<t pos="DT" word="The"/>
 				<t pos="JJ" word="whole"/>
 				<t pos="NN" word="world"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="lol"/>
 			</terminals>
 		</Post>
@@ -2067,7 +2067,7 @@
 				<t pos="NNS" word="lies"/>
 				<t pos="," word=","/>
 				<t pos="UH" word="huh"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser98">snow white :)<terminals>
@@ -2390,7 +2390,7 @@
 		</Post>
 		<Post class="whQuestion" user="10-26-teensUser86">mono? what the heck is that<terminals>
 				<t pos="NNP" word="mono"/>
-				<t pos="." word="?"/>
+				
 				<t pos="WP" word="what"/>
 				<t pos="DT" word="the"/>
 				<t pos="NN" word="heck"/>
@@ -3307,7 +3307,7 @@
 				<t pos="NNP" word="10-26-teensUser122"/>
 				<t pos="VBG" word="doing"/>
 				<t pos="RB" word="here"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="Lol"/>
 				<t pos="." word="."/>
 			</terminals>
@@ -3411,7 +3411,7 @@
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="you"/>
 				<t pos="NNP" word="10-26-teensUser119"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="lol"/>
 			</terminals>
 		</Post>
@@ -4345,7 +4345,7 @@
 				<t pos="RB" word="always"/>
 				<t pos="^VBP" word="where"/>
 				<t pos="JJ" word="red"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="10-26-teensUser66">Nadda, y tu?<terminals>
@@ -4353,7 +4353,7 @@
 				<t pos="," word=","/>
 				<t pos="FW" word="y"/>
 				<t pos="FW" word="tu"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser66">It was her barn colors<terminals>
@@ -4587,7 +4587,7 @@
 				<t pos="BES" word="&apos;s"/>
 				<t pos="RP" word="up"/>
 				<t pos="UH" word="dork"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="10-26-teensUser128">heyy sweet girl how r  u <terminals>
@@ -4640,7 +4640,7 @@
 				<t pos="NN" word="other"/>
 				<t pos="RB" word="just"/>
 				<t pos="VBZ" word="reads"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="10-26-teensUser66">lol<terminals>
@@ -4738,7 +4738,7 @@
 				<t pos="DT" word="any"/>
 				<t pos="IN" word="in"/>
 				<t pos="NN" word="person"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Accept" user="10-26-teensUser86">exactly<terminals>
@@ -4769,7 +4769,7 @@
 		</Post>
 		<Post class="Accept" user="10-26-teensUser15">yea ?<terminals>
 				<t pos="UH" word="yea"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="10-26-teensUser143">hey<terminals>
@@ -4785,7 +4785,7 @@
 				<t pos="PRP" word="u"/>
 				<t pos="DT" word="a"/>
 				<t pos="NN" word="guy"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="10-26-teensUser149">any hot girls wanna chat w/a college guy<terminals>
@@ -4906,7 +4906,7 @@
 		</Post>
 		<Post class="ynQuestion" user="10-26-teensUser66">me?<terminals>
 				<t pos="PRP" word="me"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="10-26-teensUser98">I'm telling you bro.. you can like, get laid?  that's awesome.<terminals>
@@ -4922,7 +4922,7 @@
 				<t pos="," word=","/>
 				<t pos="VB" word="get"/>
 				<t pos="VBN" word="laid"/>
-				<t pos="." word="?"/>
+				
 				<t pos="DT" word="that"/>
 				<t pos="BES" word="&apos;s"/>
 				<t pos="JJ" word="awesome"/>
@@ -5518,7 +5518,7 @@
 				<t pos="NNP" word="10-26-teensUser156"/>
 				<t pos="VBP" word="do"/>
 				<t pos="PRP" word="you"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="10-26-teensUser156">hi<terminals>
@@ -5529,7 +5529,7 @@
 				<t pos="WRB" word="how"/>
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="you"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="yAnswer" user="10-26-teensUser156">nah its all good<terminals>

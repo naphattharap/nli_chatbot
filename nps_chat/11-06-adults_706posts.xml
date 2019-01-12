@@ -91,7 +91,7 @@
 				<t pos="VBZ" word="wants"/>
 				<t pos="TO" word="to"/>
 				<t pos="VB" word="chat"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Bye" user="11-06-adultsUser82">tc not<terminals>
@@ -116,7 +116,7 @@
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="u"/>
 				<t pos="NNP" word="11-06-adultsUser35"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Bye" user="11-06-adultsUser5">tc other 11-06-adultsUser5<terminals>
@@ -235,7 +235,7 @@
 				<t pos="IN" word="with"/>
 				<t pos="VBG" word="being"/>
 				<t pos="CD" word="30"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="lol"/>
 			</terminals>
 		</Post>
@@ -251,7 +251,7 @@
 				<t pos="PRP" word="me"/>
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="you"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">Me&gt;<terminals>
@@ -260,7 +260,7 @@
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser53">?<terminals>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser60">.ACTION slaps 11-06-adultsUser5 around a bit with a large trout.<terminals>
@@ -360,7 +360,7 @@
 				<t pos="TO" word="to"/>
 				<t pos="VB" word="chat"/>
 				<t pos="NNP" word="11-06-adultsUser49"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">Older ladies can move their bodies still<terminals>
@@ -426,7 +426,7 @@
 				<t pos="IN" word="in"/>
 				<t pos="DT" word="the"/>
 				<t pos="NN" word="pic"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">my girl ^_^<terminals>
@@ -469,7 +469,7 @@
 				<t pos="NN" word="anyone"/>
 				<t pos="IN" word="from"/>
 				<t pos="NNP" word="NC"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="nAnswer" user="11-06-adultsUser53">No<terminals>
@@ -596,7 +596,7 @@
 				<t pos="RP" word="up"/>
 				<t pos="TO" word="to"/>
 				<t pos="UH" word="sassy"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser37">lol....who's 11-06-adultsUser45?<terminals>
@@ -605,7 +605,7 @@
 				<t pos="WP" word="who"/>
 				<t pos="BES" word="&apos;s"/>
 				<t pos="NNP" word="11-06-adultsUser45"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser96">any ladies from va?<terminals>
@@ -613,7 +613,7 @@
 				<t pos="NNS" word="ladies"/>
 				<t pos="IN" word="from"/>
 				<t pos="NNP" word="va"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser19">did we lose 11-06-adultsUser88?<terminals>
@@ -621,7 +621,7 @@
 				<t pos="PRP" word="we"/>
 				<t pos="VBP" word="lose"/>
 				<t pos="NNP" word="11-06-adultsUser88"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">You broke my heart when I found out you had a bf, 11-06-adultsUser60<terminals>
@@ -652,7 +652,7 @@
 				<t pos="VBP" word="r"/>
 				<t pos="PRP" word="u"/>
 				<t pos="NNP" word="11-06-adultsUser37"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser97">JOIN<terminals>
@@ -914,7 +914,7 @@
 				<t pos="PRP" word="I"/>
 				<t pos="VBD" word="was"/>
 				<t pos="RB" word="out"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser99">so what the fawk is goin on tonight<terminals>
@@ -1009,7 +1009,7 @@
 				<t pos="PRP" word="you"/>
 				<t pos="VB" word="kick"/>
 				<t pos="PRP" word="me"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser53">Welcome  back 11-06-adultsUser19<terminals>
@@ -1055,7 +1055,7 @@
 				<t pos="UH" word="hmm"/>
 				<t pos=":" word="..."/>
 				<t pos="NNP" word="seth"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="lol"/>
 			</terminals>
 		</Post>
@@ -1249,7 +1249,7 @@
 				<t pos="IN" word="in"/>
 				<t pos="RB" word="here"/>
 				<t pos="RB" word="too"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">11-06-adultsUser37<terminals>
@@ -1465,7 +1465,7 @@
 				<t pos="PRP" word="i"/>
 				<t pos="VBP" word="lose"/>
 				<t pos="NNP" word="11-06-adultsUser19"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser102">PART<terminals>
@@ -1515,7 +1515,7 @@
 				<t pos="NN" word="rest"/>
 				<t pos="IN" word="of"/>
 				<t pos="PRP" word="us"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser37">teehee<terminals>
@@ -1713,7 +1713,7 @@
 				<t pos="NN" word="fun"/>
 				<t pos="IN" word="in"/>
 				<t pos="DT" word="that"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser82">hi 11-06-adultsUser67<terminals>
@@ -1724,7 +1724,7 @@
 		<Post class="ynQuestion" user="11-06-adultsUser35">any cam?<terminals>
 				<t pos="DT" word="any"/>
 				<t pos="NN" word="cam"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser103">hello is there anyone in the maryland area<terminals>
@@ -1751,7 +1751,7 @@
 				<t pos="NNP" word="hearthechatters"/>
 				<t pos="RB" word="still"/>
 				<t pos="IN" word="up"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser43">PART<terminals>
@@ -1813,7 +1813,7 @@
 				<t pos="VBZ" word="is"/>
 				<t pos="NN" word="everyone"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser37">i should put a new one up lol<terminals>
@@ -1833,7 +1833,7 @@
 				<t pos="VBZ" word="is"/>
 				<t pos="NN" word="everyone"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser82">tennessee here<terminals>
@@ -1898,7 +1898,7 @@
 				<t pos="VB" word="be"/>
 				<t pos="JJ" word="nakey"/>
 				<t pos="RB" word="together"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser19">Even you people that sit there and never say anything<terminals>
@@ -1950,7 +1950,7 @@
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser19">nakey?<terminals>
 				<t pos="JJ" word="nakey"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser105">lol 11-06-adultsUser5<terminals>
@@ -1966,7 +1966,7 @@
 				<t pos="WP" word="who"/>
 				<t pos="VBZ" word="says"/>
 				<t pos="DT" word="that"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser19">lol<terminals>
@@ -1988,7 +1988,7 @@
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser42">promise?<terminals>
 				<t pos="VBP" word="promise"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser37">where in ohio 11-06-adultsUser19?<terminals>
@@ -1996,7 +1996,7 @@
 				<t pos="IN" word="in"/>
 				<t pos="NNP" word="ohio"/>
 				<t pos="NNP" word="11-06-adultsUser19"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">I'm not easy to beat up.. you just have a wicked right hook, 11-06-adultsUser107<terminals>
@@ -2022,12 +2022,12 @@
 		<Post class="ynQuestion" user="11-06-adultsUser35">no cam?<terminals>
 				<t pos="DT" word="no"/>
 				<t pos="NN" word="cam"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser105">innocent?<terminals>
 				<t pos="JJ" word="innocent"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Accept" user="11-06-adultsUser25">lol ok 11-06-adultsUser5<terminals>
@@ -2044,7 +2044,7 @@
 				<t pos="NNS" word="parents"/>
 				<t pos="IN" word="in"/>
 				<t pos="RB" word="herE"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser105">bwahahahahahahahahahaha<terminals>
@@ -2124,7 +2124,7 @@
 				<t pos="WRB" word="where"/>
 				<t pos="PRP" word="you"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser25">lmao 11-06-adultsUser105<terminals>
@@ -2208,7 +2208,7 @@
 				<t pos="NNP" word="11-06-adultsUser85"/>
 				<t pos="PRP" word="me"/>
 				<t pos="RB" word="too"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">she's as innocent as I am virginal.<terminals>
@@ -2229,7 +2229,7 @@
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser105">wha?<terminals>
 				<t pos="WP" word="wha"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">I could see 11-06-adultsUser107 on that show<terminals>
@@ -2396,11 +2396,11 @@
 				<t pos="NN" word="male"/>
 				<t pos="CC" word="or"/>
 				<t pos="JJ" word="female"/>
-				<t pos="." word="?"/>
+				
 				<t pos="PRP" word="I"/>
 				<t pos="RB" word="always"/>
 				<t pos="VBD" word="wondered"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser107">Im a single parent to..i seem to date boys and im the mama<terminals>
@@ -2427,7 +2427,7 @@
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="you"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser19">11-06-adultsUser88 - did we lose ya?<terminals>
@@ -2437,7 +2437,7 @@
 				<t pos="PRP" word="we"/>
 				<t pos="VB" word="lose"/>
 				<t pos="PRP" word="ya"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser51">:-) hello all<terminals>
@@ -2475,7 +2475,7 @@
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser53">11-06-adultsUser107?<terminals>
 				<t pos="NNP" word="11-06-adultsUser107"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">Ok 11-06-adultsUser64 lol<terminals>
@@ -2531,7 +2531,7 @@
 				<t pos="TO" word="to"/>
 				<t pos="PRP" word="you"/>
 				<t pos="NNP" word="11-06-adultsUser35"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser53">You make a good mother ^_^<terminals>
@@ -2560,7 +2560,7 @@
 				<t pos="DT" word="the"/>
 				<t pos="NN" word="corner"/>
 				<t pos="JJ" word="naked"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word="lol"/>
 			</terminals>
 		</Post>
@@ -2609,7 +2609,7 @@
 				<t pos="NN" word="male"/>
 				<t pos="CC" word="or"/>
 				<t pos="JJ" word="female"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">&lt;---- 11-06-adultsUser105<terminals>
@@ -2681,7 +2681,7 @@
 				<t pos="WP" word="who"/>
 				<t pos="NNP" word="11-06-adultsUser105"/>
 				<t pos="VBZ" word="is"/>
-				<t pos="." word="?"/>
+				
 				<t pos="UH" word=":)"/>
 				<t pos="UH" word="lol"/>
 				<t pos="." word="."/>
@@ -2742,7 +2742,7 @@
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="ya"/>
 				<t pos="NNP" word="11-06-adultsUser58"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser104">PART<terminals>
@@ -2908,7 +2908,7 @@
 				<t pos="JJ" word="next"/>
 				<t pos="NN" word="time"/>
 				<t pos="UH" word="k"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser37">hey 11-06-adultsUser115<terminals>
@@ -2922,7 +2922,7 @@
 				<t pos="CC" word="or"/>
 				<t pos="IN" word="near"/>
 				<t pos="NNP" word="maryland"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser115">hey 11-06-adultsUser37<terminals>
@@ -3026,7 +3026,7 @@
 				<t pos="VB" word="care"/>
 				<t pos="TO" word="to"/>
 				<t pos="VB" word="chat"/>
-				<t pos="." word="?"/>
+				
 				<t pos="VB" word="hit"/>
 				<t pos="CD" word="8"/>
 				<t pos="CC" word="or"/>
@@ -3052,7 +3052,7 @@
 				<t pos="JJ" word="worth"/>
 				<t pos="VBG" word="looking"/>
 				<t pos="IN" word="at"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser115">hey 11-06-adultsUser51<terminals>
@@ -3091,7 +3091,7 @@
 				<t pos="VBP" word="pop"/>
 				<t pos="PRP$" word="your"/>
 				<t pos="NN" word="ass"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser115">aw thanksss<terminals>
@@ -3103,7 +3103,7 @@
 				<t pos="^NN" word="1cos"/>
 				<t pos="NN" word="age"/>
 				<t pos="NN" word="loc"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser107">aTerry I DON WHISPre<terminals>
@@ -3241,7 +3241,7 @@
 				<t pos="DT" word="a"/>
 				<t pos="JJ" word="blue"/>
 				<t pos="NN" word="frown"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emotion" user="11-06-adultsUser115">11-06-adultsUser105 omggg<terminals>
@@ -3251,7 +3251,7 @@
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser107">11-06-adultsUser5?<terminals>
 				<t pos="NNP" word="11-06-adultsUser5"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emphasis" user="11-06-adultsUser53">Stick em if you got em!!!!!<terminals>
@@ -3296,7 +3296,7 @@
 				<t pos="PRP" word="me"/>
 				<t pos="VBP" word="do"/>
 				<t pos="PRP" word="you"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser1">&lt;&lt; can't wait for these elections to get over with ... sick of seeing them on tv<terminals>
@@ -3387,7 +3387,7 @@
 				<t pos="PRP" word="you"/>
 				<t pos="DT" word="a"/>
 				<t pos="NN" word="voter"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser98">JOIN<terminals>
@@ -3477,14 +3477,14 @@
 				<t pos="WRB" word="where"/>
 				<t pos="PRP" word="you"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser88">still here 11-06-adultsUser35?<terminals>
 				<t pos="RB" word="still"/>
 				<t pos="RB" word="here"/>
 				<t pos="NNP" word="11-06-adultsUser35"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser110">PART<terminals>
@@ -3498,7 +3498,7 @@
 				<t pos="IN" word="on"/>
 				<t pos="DT" word="the"/>
 				<t pos="NN" word="phone"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser19">ha ha ha very funny<terminals>
@@ -3809,7 +3809,7 @@
 				<t pos="DT" word="all"/>
 				<t pos="JJ" word="bossy"/>
 				<t pos="RB" word="again"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser51">JOIN<terminals>
@@ -3835,7 +3835,7 @@
 		</Post>
 		<Post class="whQuestion" user="11-06-adultsUser17">pmsl?<terminals>
 				<t pos="X" word="pmsl"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser125">JOIN<terminals>
@@ -4249,7 +4249,7 @@
 				<t pos="," word=","/>
 				<t pos="VB" word="marry"/>
 				<t pos="PRP" word="me"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser103">i apoligize<terminals>
@@ -4262,7 +4262,7 @@
 				<t pos="VBP" word="are"/>
 				<t pos="PRP" word="you"/>
 				<t pos="NNP" word="11-06-adultsUser129"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser82">hi 11-06-adultsUser129<terminals>
@@ -4311,7 +4311,7 @@
 				<t pos="NN" word="anyone"/>
 				<t pos="IN" word="in"/>
 				<t pos="NNP" word="maryland"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser26">hiii 11-06-adultsUser105 btw<terminals>
@@ -4339,7 +4339,7 @@
 				<t pos="DT" word="the"/>
 				<t pos="NN" word="bachelorette"/>
 				<t pos="NN" word="party"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">11-06-adultsUser130<terminals>
@@ -4409,7 +4409,7 @@
 				<t pos="BES" word="&apos;s"/>
 				<t pos="PRP" word="you"/>
 				<t pos="NNP" word="11-06-adultsUser130"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Emphasis" user="11-06-adultsUser115">open bar!!!<terminals>
@@ -4425,7 +4425,7 @@
 				<t pos="BES" word="s"/>
 				<t pos="NNS" word="things"/>
 				<t pos="NNP" word="11-06-adultsUser105"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser105">busy busy but good<terminals>
@@ -4441,7 +4441,7 @@
 				<t pos="NN" word="anyone"/>
 				<t pos="VBP" word="wanna"/>
 				<t pos="VB" word="chat"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Statement" user="11-06-adultsUser130">quiet in here<terminals>
@@ -4472,7 +4472,7 @@
 				<t pos="WRB" word="where"/>
 				<t pos="PRP" word="you"/>
 				<t pos="IN" word="from"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser129">PART<terminals>
@@ -4611,7 +4611,7 @@
 		</Post>
 		<Post class="ynQuestion" user="11-06-adultsUser69">11-06-adultsUser69?<terminals>
 				<t pos="NNP" word="11-06-adultsUser69"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="System" user="11-06-adultsUser133">JOIN<terminals>
@@ -4777,7 +4777,7 @@
 				<t pos="VB" word="want"/>
 				<t pos="TO" word="to"/>
 				<t pos="VB" word="chat"/>
-				<t pos="." word="?"/>
+				
 			</terminals>
 		</Post>
 		<Post class="Greet" user="11-06-adultsUser25">wb 11-06-adultsUser37<terminals>
