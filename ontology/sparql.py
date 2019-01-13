@@ -2,8 +2,12 @@
 import rdflib
 from rdflib.graph import ConjunctiveGraph, Namespace
 
-def print_query_resutl(list_result):
-    for obj in list_result:
+def query(query_statement):
+    return list(g.query(query_statement))
+
+def print_query_result(query_statement):
+    q_result =  query(query_statement)
+    for obj in q_result:
         print(obj)   
     
 g = rdflib.Graph()
@@ -15,6 +19,7 @@ result = g.parse("book")
 # ?subject rdfs:subClassOf ?object
 prefix = "PREFIX nli: <http://www.semanticweb.org/ont/nli#>"
 
+# Query all 
 select_book_author = prefix + """
                 SELECT ?title ?name ?lastname WHERE {  
                      ?book nli:hasAuthor ?who .
@@ -23,9 +28,40 @@ select_book_author = prefix + """
                      ?book nli:title ?title 
                  }"""
                  
-book_author_result = list(g.query(select_book_author))
-print_query_resutl(book_author_result)
+print_query_result(select_book_author)
 
+
+# Query by Book title
+book_title = "Harry Potter"
+select_book_author_by_title  = prefix + """
+                SELECT ?title ?name ?lastname WHERE {  
+                     ?book nli:hasAuthor ?who .
+                     ?who nli:firstName ?name . 
+                     ?who nli:lastName ?lastname .
+                     ?book nli:title ?title .
+                FILTER regex(?title,\""""+ book_title + """\","i")
+                 }"""
+                 
+
+print_query_result(select_book_author_by_title)
+
+
+# Try ASK
+# SPARQL provides a simple ASK form that tests whether a pattern can be found in a graph. 
+# The ASK keyword replaces the WHERE keyword, 
+# and a simple boolean result is returned indicating whether there is a solution for the pattern in the graph. 
+
+author_firstname = "Yaser"
+desc_query  = prefix + """
+                DESCRIBE  ?author
+                WHERE {
+                   ?author nli:firstName "Yaser"^^xsd:string .
+                }"""
+                 
+
+list_spo = query(desc_query)
+for s, p, o in list_spo:
+    print( "--s, p, o--", s, "----", p,  "----", o)
 
 # test triple
 for triple in g:
@@ -43,10 +79,7 @@ for s, p, o in l:
 
 
 
-# Try filter data
 
-
-# Try ASK
 
 
 
