@@ -1,0 +1,5 @@
+{ 
+	"ask_for_criteria": ["Do you have any favorite author or genre?", 
+					     "Do you have any favorite book category or any author?"] ,   
+	"ask_for_ab": ["a", "b"]
+}

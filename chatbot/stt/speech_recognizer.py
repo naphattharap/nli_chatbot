@@ -1,14 +1,13 @@
-import logging
 from abc import abstractmethod
+import logging
 
+import config
 import speech_recognition as sr
 
 # Internal configuration class
-import config
-
-
 logging.getLogger().setLevel(logging.DEBUG)
 # Internal lib
+
 
 class SpeechRecognizerInterface:
 
@@ -58,7 +57,7 @@ class GoogleRecognizer(SpeechRecognizerABC):
                 print("Error! Could not convert speech to string!")
                 return "Error"
         except sr.UnknownValueError:
-            print("Error! Could not process that audio.")
+            print("UnknownValueError Could not process that audio.")
             return "Error"
         except sr.WaitTimeoutError:
             print("timeout...")
