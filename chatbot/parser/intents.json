@@ -1,0 +1,22 @@
+{
+    "req_recommend_by_genre": 
+        {	"next_action": "",
+            "slots": ["genre_name", "attr2"],
+            "match_words": "have, want, recommend, book, genre, category, type" 
+        },
+    "req_recommend_by_author": 
+        {	
+        	"next_action": "",
+        	"slots": ["author_name"],
+        	"match_words": "have, want, recommend, book, author, writer, write"
+        	
+        },
+    "statement_find_book": 
+        {	
+        	"respond_statement": "ask_for_find_book_criteria",
+        	"next_action": "wait_for_slot",
+        	"slots_choices": ["author", "genre", "category", "title"],
+        	"slots": ["find_by"],
+        	"match_words": "look, book"
+        }
+}
