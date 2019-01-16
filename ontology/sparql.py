@@ -1,108 +1,87 @@
 # required lib name: rdflib 4.2.2
+import logging
+
 import rdflib
 from rdflib.graph import ConjunctiveGraph, Namespace
 import spacy
 from textacy import spacy_utils
+from ext_client.google_client import GoogleBookApiService
+logging.getLogger().setLevel(logging.DEBUG)
 
 
-def query(query_statement):
-    return list(g.query(query_statement))
-
-
-def print_query_result(query_statement):
-    q_result = query(query_statement)
-    for obj in q_result:
-        print(obj.labels)   
-        for e in obj:
-            print(e)
-
+class QueryManager:
     
-g = rdflib.Graph()
-
-# ontology and instances information are in this file
-result = g.parse("book")
-g.serialize(format="n3")
-
-for subj, pred, obj in g:
-    print("s, p, o --> ", subj, pred, obj)
-    if (subj, pred, obj) not in g:
-       raise Exception("It better be!")
-
-s = g.serialize(format='n3')
-print(s)
-
-input_msg = "Who is author of Harry Potter"
-nlp = spacy.load('en_core_web_sm')
-doc = nlp(input_msg)
-for sentence in doc.sents:
-    root = sentence.root
-    print("\nsentence:", sentence)
-    print("\nroot:", root)
-    print("\nsubject of root:", spacy_utils.get_subjects_of_verb(root))
-    verbs = spacy_utils.get_main_verbs_of_sent(sentence)
-    for v in verbs:
-        print("\nsubject of root:", spacy_utils.get_span_for_verb_auxiliaries(v))
-    print("\object:", spacy_utils.get_objects_of_verb(root))
-#     print("\compound noun:", spacy_utils.get_span_for_compound_noun(noun))
-
-# ?subject rdfs:subClassOf ?object
-prefix = "PREFIX nli: <http://www.semanticweb.org/ont/nli#>"
-
-# Query all 
-select_book_author = prefix + """
-                SELECT ?title ?name ?lastname WHERE {  
-                     ?book nli:hasAuthor ?who .
-                     ?who nli:firstName ?name . 
-                     ?who nli:lastName ?lastname .
-                     ?book nli:title ?title 
-                 }"""
-                 
-print_query_result(select_book_author)
-
-# Query by Book title
-book_title = "Harry Potter"
-select_book_author_by_title = prefix + """
-                SELECT ?title ?name ?lastname WHERE {  
-                     ?book nli:hasAuthor ?who .
-                     ?who nli:firstName ?name . 
-                     ?who nli:lastName ?lastname .
-                     ?book nli:title ?title .
-                FILTER regex(?title,\"""" + book_title + """\","i")
-                 }"""
-
-print_query_result(select_book_author_by_title)
-
-# Try ASK
-# SPARQL provides a simple ASK form that tests whether a pattern can be found in a graph. 
-# The ASK keyword replaces the WHERE keyword, 
-# and a simple boolean result is returned indicating whether there is a solution for the pattern in the graph. 
-
-# author_firstname = "Yaser"
-# desc_query  = prefix + """
-#                 DESCRIBE  ?author
-#                 WHERE {
-#                    ?author nli:firstName "Yaser"^^xsd:string .
-#                 }"""
-
-# list_spo = query(desc_query)
-# for s, p, o in list_spo:
-#     print( "--s, p, o--", s, "----", p,  "----", o)
-
-# test triple
-for triple in g:
-    print("--triple--", triple)
-    for e in triple:
-        print(e.label_info())
-        print()
+    def __init__(self):
+        # ontology and instances information are in this file
+        self.g = rdflib.Graph()
+        self.book_ontology = self.g.parse("ontology/book")
+        self.g.serialize(format="n3")
+        self.book_ontology_prefix = "PREFIX nli: <http://www.semanticweb.org/ont/nli#>"
+        
+    def query(self, query_statement):
+        return list(self.g.query(query_statement))
     
-l = list(g.query('select * where { ?s ?p ?o }'))
-for s, p, o in l:
-    print("--s, p, o--", s, "----", p, "----", o)
+    def print_query_result(self, query_statement):
+        q_result = self.query(query_statement)
+        for obj in q_result:
+            print(obj.labels)   
+            for e in obj:
+                print(e)
+    
+    def get_books_by_genre(self, req_params):
+        """
+        Query ontology to find google API then call the API to get result
+        """
+        # TODO assume that got API from ontology
+        # https://www.googleapis.com/books/v1/volumes?q=title:Harry%20Potter
+        # https://www.googleapis.com/books/v1/volumes?q=subject:Art
+        genre = req_params["genre"]
 
-# Try query this one is not working yet
-# l = list( g.triples((None,rdflib.URIRef('#writesBook'),None)) )
-# for s, o in l:
-#     print(s, "", o)
+        googleBook = GoogleBookApiService()
+        result = googleBook.search_by_genre(genre)
+        return result
+        
+        # query
+        
+        # call API
+        
+        # generate response message and return
+    
+    def get_books_by_author(self, req_params):
+        logging.info("param: %s", req_params)
+        pass
 
-# Try DESCRIBE
+    def find_book_by_title(self, req_params):
+        logging.info("param: %s", req_params)
+        pass
+        
+    def analyze_spo(self, g):
+        for subj, pred, obj in g:
+            print("s, p, o --> ", subj, pred, obj)
+            if (subj, pred, obj) not in g:
+                raise Exception("It better be!")
 
+    def test_query1(self):
+        # Query all 
+        select_book_author = self.book_ontology_prefix + """
+                        SELECT ?title ?name ?lastname WHERE {  
+                             ?book nli:hasAuthor ?who .
+                             ?who nli:firstName ?name . 
+                             ?who nli:lastName ?lastname .
+                             ?book nli:title ?title 
+                         }"""
+                         
+        self.print_query_result(select_book_author)
+
+    def query_by_book_title(self, book_title):
+        # Query by Book title
+        query_statement = self.book_ontology_prefix + """
+                        SELECT ?title ?name ?lastname WHERE {  
+                             ?book nli:hasAuthor ?who .
+                             ?who nli:firstName ?name . 
+                             ?who nli:lastName ?lastname .
+                             ?book nli:title ?title .
+                        FILTER regex(?title,\"""" + book_title + """\","i")
+                         }"""
+        self.query(query_statement)
+        self.print_query_result(query_statement)

@@ -1,5 +1,29 @@
-{ 
-	"ask_for_criteria": ["Do you have any favorite author or genre?", 
-					     "Do you have any favorite book category or any author?"] ,   
-	"ask_for_ab": ["a", "b"]
+{
+	"ask_for_find_book_criteria": [
+		"Do you have any favorite author or genre?",
+		"Do you have any favorite book category or any author?",
+		"Would you like to find book by genre or author?"
+	],
+	"ask_for_author_name": [
+		"What is the book's author name?'",
+		"What is the author name?"
+	],
+	"default_unknow_choice": [
+		"Sorry, I do not understand what you mean"
+	],
+	"ask_for_book_genre": [
+		"What is your favorite genre?",
+		"What genre would you like to read today?"
+	],
+	"ask_for_book_author": [
+		"What is your favorite author?",
+		"What is an author name?"
+	],
+	"result_statement_find_book": [
+		"This is informatin about {0}. Would you like to see more books?"
+	],
+	"result_req_recommend_by_genre": [
+		"yes, here are books {0}",
+		"That's nice genre, here are books {0}"
+	]
 }

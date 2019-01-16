@@ -38,7 +38,7 @@ class SpeechRecognizerABC:
 
 class GoogleRecognizer(SpeechRecognizerABC):
 
-    wait_timeout_sec = 30
+    wait_timeout_sec = 20
 
     def listen(self):
 
