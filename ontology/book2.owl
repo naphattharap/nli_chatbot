@@ -1,0 +1,219 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/kb/nli-kb#"
+     xml:base="http://www.semanticweb.org/kb/nli-kb"
+     xmlns:nli="http://www.semanticweb.org/ont/nli#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/kb/nli-kb">
+        <owl:imports rdf:resource="http://www.semanticweb.org/ont/nli"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#hasCategory -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kb/nli-kb#hasCategory"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#hasTargetReader -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/kb/nli-kb#hasTargetReader">
+        <rdfs:range rdf:resource="http://www.semanticweb.org/ont/nli#TargetReader"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Art -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Art"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Biography -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Biography"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Business -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Business"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Career -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Career">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kb/nli-kb#Business"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Cookbooks -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Cookbooks"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Economic -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Economic">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kb/nli-kb#Business"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Painting -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Painting">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kb/nli-kb#Art"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Photography -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/kb/nli-kb#Photography">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/kb/nli-kb#Art"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#AML -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#AML">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Publisher"/>
+        <nli:publisherName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">AML</nli:publisherName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Harry_Potter -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#Harry_Potter"/>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Hsuan_Tien_Lin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#Hsuan_Tien_Lin">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Author"/>
+        <nli:writesBook rdf:resource="http://www.semanticweb.org/kb/nli-kb#Learning_from_Data"/>
+        <nli:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hsuan</nli:firstName>
+        <nli:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Tien Lin</nli:lastName>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Hsuan Tien Lin</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Learning_from_Data -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#Learning_from_Data">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ont/nli#Math"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ont/nli#NonFiction"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Book"/>
+        <nli:isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">9781600490054</nli:isbn>
+        <nli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEARNING FROM DATA</nli:title>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">LEARNING FROM DATA</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Malik_Magon_Ismail -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#Malik_Magon_Ismail">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Author"/>
+        <nli:writesBook rdf:resource="http://www.semanticweb.org/kb/nli-kb#Learning_from_Data"/>
+        <nli:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Magon Ismail</nli:lastName>
+        <nli:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Malik</nli:lastName>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Malik Magon Ismail</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#Yaser_Abu_Mostafa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#Yaser_Abu_Mostafa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Author"/>
+        <nli:writesBook rdf:resource="http://www.semanticweb.org/kb/nli-kb#Learning_from_Data"/>
+        <nli:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yaser</nli:firstName>
+        <nli:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Abu Mostafa</nli:lastName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#harry_potter -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#harry_potter">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Book"/>
+        <nli:hasAuthor rdf:resource="http://www.semanticweb.org/kb/nli-kb#jk_rowling"/>
+        <nli:edition rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1</nli:edition>
+        <nli:isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">100</nli:isbn>
+        <nli:isbn rdf:datatype="http://www.w3.org/2001/XMLSchema#string">12345</nli:isbn>
+        <nli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harry Potter</nli:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#harry_potter2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#harry_potter2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Author"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Book"/>
+        <nli:hasAuthor rdf:resource="http://www.semanticweb.org/kb/nli-kb#jk_rowling"/>
+        <nli:title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harry Potter2</nli:title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/kb/nli-kb#jk_rowling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/kb/nli-kb#jk_rowling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/ontologies/nli#Author"/>
+        <nli:writesBook rdf:resource="http://www.semanticweb.org/kb/nli-kb#harry_potter"/>
+        <nli:firstName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">J.K.</nli:firstName>
+        <nli:lastName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Rowling</nli:lastName>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

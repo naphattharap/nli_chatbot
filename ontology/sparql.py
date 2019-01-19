@@ -14,7 +14,8 @@ class QueryManager:
     def __init__(self):
         # ontology and instances information are in this file
         self.g = rdflib.Graph()
-        self.book_ontology = self.g.parse("ontology/book")
+        # self.book_ontology = self.g.parse("ontology/book")
+        self.book_ontology = self.g.parse("book2.owl")
         self.g.serialize(format="n3")
         self.book_ontology_prefix = "PREFIX nli: <http://www.semanticweb.org/ont/nli#>"
         
@@ -23,10 +24,13 @@ class QueryManager:
     
     def print_query_result(self, query_statement):
         q_result = self.query(query_statement)
+        results = []
         for obj in q_result:
-            print(obj.labels)   
+            # print(obj.labels)   
             for e in obj:
-                print(e)
+                results.append(e.__str__())
+                # print(e)
+        return results
     
     def get_books_by_genre(self, req_params):
         """
@@ -85,3 +89,21 @@ class QueryManager:
                          }"""
         self.query(query_statement)
         self.print_query_result(query_statement)
+        
+    def query_book_title_by_author(self, author):
+        # Query by Book title
+        query_statement = self.book_ontology_prefix + """
+                        SELECT ?title WHERE {  
+                             ?book nli:hasAuthor ?who .
+                             ?who nli:firstName ?name . 
+                             ?who nli:lastName ?lastname .
+                             ?book nli:title ?title .
+                        FILTER regex(?name,\"""" + author + """\","i")
+                         }"""
+        # self.query(query_statement)
+        results = self.print_query_result(query_statement)
+        print(results)
+
+
+q = QueryManager()        
+q.query_book_title_by_author("J.K.")
