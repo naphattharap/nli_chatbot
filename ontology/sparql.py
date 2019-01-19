@@ -1,11 +1,10 @@
 # required lib name: rdflib 4.2.2
 import logging
 
-import rdflib
-from rdflib.graph import ConjunctiveGraph, Namespace
-import spacy
-from textacy import spacy_utils
+from rdflib.graph import Graph, ConjunctiveGraph, Namespace
+
 from ext_client.google_client import GoogleBookApiService
+
 logging.getLogger().setLevel(logging.DEBUG)
 
 
@@ -13,24 +12,22 @@ class QueryManager:
     
     def __init__(self):
         # ontology and instances information are in this file
-        self.g = rdflib.Graph()
+        self.g = Graph()
         # self.book_ontology = self.g.parse("ontology/book")
-        self.book_ontology = self.g.parse("book2.owl")
-        self.g.serialize(format="n3")
-        self.book_ontology_prefix = "PREFIX nli: <http://www.semanticweb.org/ont/nli#>"
+        self.g.parse("ontology.owl")
+        # self.g.serialize(format="n3")
+        self.book_ontology_prefix = "PREFIX nli: <http://www.semanticweb.org/jessie/ontologies/2018/10/Books#>"
         
     def query(self, query_statement):
         return list(self.g.query(query_statement))
     
-    def print_query_result(self, query_statement):
+    def query_result(self, query_statement):
         q_result = self.query(query_statement)
         results = []
         for obj in q_result:
-            # print(obj.labels)   
             for e in obj:
                 results.append(e.__str__())
-                # print(e)
-        return results
+        return results;
     
     def get_books_by_genre(self, req_params):
         """
@@ -40,24 +37,9 @@ class QueryManager:
         # https://www.googleapis.com/books/v1/volumes?q=title:Harry%20Potter
         # https://www.googleapis.com/books/v1/volumes?q=subject:Art
         genre = req_params["genre"]
-
         googleBook = GoogleBookApiService()
         result = googleBook.search_by_genre(genre)
         return result
-        
-        # query
-        
-        # call API
-        
-        # generate response message and return
-    
-    def get_books_by_author(self, req_params):
-        logging.info("param: %s", req_params)
-        pass
-
-    def find_book_by_title(self, req_params):
-        logging.info("param: %s", req_params)
-        pass
         
     def analyze_spo(self, g):
         for subj, pred, obj in g:
@@ -65,45 +47,38 @@ class QueryManager:
             if (subj, pred, obj) not in g:
                 raise Exception("It better be!")
 
-    def test_query1(self):
-        # Query all 
-        select_book_author = self.book_ontology_prefix + """
-                        SELECT ?title ?name ?lastname WHERE {  
-                             ?book nli:hasAuthor ?who .
-                             ?who nli:firstName ?name . 
-                             ?who nli:lastName ?lastname .
-                             ?book nli:title ?title 
-                         }"""
-                         
-        self.print_query_result(select_book_author)
-
-    def query_by_book_title(self, book_title):
+    def find_book_by_author(self, book_title):
         # Query by Book title
         query_statement = self.book_ontology_prefix + """
-                        SELECT ?title ?name ?lastname WHERE {  
+                        SELECT ?title ?name WHERE {  
                              ?book nli:hasAuthor ?who .
-                             ?who nli:firstName ?name . 
-                             ?who nli:lastName ?lastname .
+                             ?who nli:name ?name .
                              ?book nli:title ?title .
                         FILTER regex(?title,\"""" + book_title + """\","i")
                          }"""
-        self.query(query_statement)
-        self.print_query_result(query_statement)
+
+        results = self.query_result(query_statement)
+        print(results)
+        return results
         
-    def query_book_title_by_author(self, author):
+    def find_book_by_title(self, author):
         # Query by Book title
         query_statement = self.book_ontology_prefix + """
-                        SELECT ?title WHERE {  
-                             ?book nli:hasAuthor ?who .
-                             ?who nli:firstName ?name . 
-                             ?who nli:lastName ?lastname .
-                             ?book nli:title ?title .
+                         SELECT ?title ?genre WHERE {  
+                               ?book nli:hasAuthor ?author .
+                               ?book nli:title ?title .
+                               ?book nli:genre ?genre .
                         FILTER regex(?name,\"""" + author + """\","i")
                          }"""
         # self.query(query_statement)
-        results = self.print_query_result(query_statement)
+        # print(self.g.query(query_statement))
+        # list_result = list(self.g.query(query_statement))
+        # print(list_result[0][0])
+        results = self.query_result(query_statement)
         print(results)
+        return results
 
 
 q = QueryManager()        
-q.query_book_title_by_author("J.K.")
+q.find_book_by_author("marie")
+q.find_book_by_title("What Animal Thinks")

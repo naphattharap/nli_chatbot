@@ -31,11 +31,12 @@ class TextParser():
         self.threshold_selected_choice = 0.8
         self.books_genre = ["cook", "comic", "children", "art", "history", "science"]
         self.books_title = ["Harry Potter"]
-        self.books_author = ["Mostafa", "John"]
+        self.books_author = ["Mostafa", "John", "Yaser"]
         
     def read_intent(self):
             intents_data = []
-            with open('contents/intents.json') as f:
+            with open('intents.json') as f:
+            # with open('contents/intents.json') as f:
                 intents_data = json.load(f)
                 if logging.getLogger().isEnabledFor(logging.DEBUG):
                     for d in intents_data:
@@ -114,7 +115,7 @@ class TextParser():
         
         entities = doc.ents
         for entity in entities:
-            ent_label = self.process_entity_label(entity)
+            ent_label = self.process_entity_label(entity.text)
             if ent_label not in input_main_words:
                 input_main_words.append(ent_label)
             
@@ -228,6 +229,9 @@ class TextParser():
                 cnt += 1
                 if slot_val == "":
                     return slot_key
+
                 
-# p = TextParser()
+p = TextParser()
+p.infer_intent("Do you have any recommend written by Yaser")
+
 # p.find_slot_from_choices("I'm looking for a book about national language", "");
