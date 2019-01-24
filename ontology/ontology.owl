@@ -1,0 +1,599 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#"
+     xml:base="http://www.semanticweb.org/jessie/ontologies/2018/10/Books"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasAuthor -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasAuthor">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasGenre -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasGenre">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasPublisher -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasPublisher">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Publisher"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasReader -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#hasReader">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#ISBN -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#ISBN">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#age -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#age">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>Adult</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>Child</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>Young</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#edition -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#edition">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#genre -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#genre">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:range>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first>Child</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first>Fiction</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first>Young</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#name -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#name">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#plot -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#plot">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#price -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#price">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#publicationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#publicationDate">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#publishName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#publishName">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Publisher"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#title -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#title">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Adult -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Adult">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Children -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Children">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Person -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Person"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Publisher -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Publisher"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Person"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Young -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Young">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Reader"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_manual_for_cleaning_women -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_manual_for_cleaning_women">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manual for cleaning women</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Alexandra_Horowitz -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Alexandra_Horowitz">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#And_still_I_rise -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#And_still_I_rise">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Maya_Angelou"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">And still I rise</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Animal_farm -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Animal_farm">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#George_Orwell"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Animal farm</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Beyond_Words -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Beyond_Words">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carl_Safina"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beyond Words: What Animals Think and Feel</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carl_Safina -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carl_Safina">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carlos_Ruiz_Zafón -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carlos_Ruiz_Zafón">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Ernest_Hemingway -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Ernest_Hemingway">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#For_whom_the_bell_tolls -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#For_whom_the_bell_tolls">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Ernest_Hemingway"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">For whom the bell tolls</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Frans_de_Waal -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Frans_de_Waal">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#George_Orwell -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#George_Orwell">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Harry_Potter -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Harry_Potter">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JK_Rowling"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Harry Potter</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Haruki_Murakami -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Haruki_Murakami">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Inside_of_a_dog -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Inside_of_a_dog">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Alexandra_Horowitz"/>
+        <title>Inside of a dog</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JK_Rowling -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JK_Rowling">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JRR_Tolkien -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JRR_Tolkien">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Jane_Austen -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Jane_Austen">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Learning_from_data -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Learning_from_data">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Yaser_Mustafa"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Learning from data</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Lucia_Berlin -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Lucia_Berlin">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Maya_Angelou -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Maya_Angelou">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Pride_and_prejudici -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Pride_and_prejudici">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Jane_Austen"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Pride and prejudici</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Swing_time -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Swing_time">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Zadie_Smith"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Swing time</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#The_lord_of_the_rings -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#The_lord_of_the_rings">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JRR_Tolkien"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The lord of the rings</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#The_princess_bride -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#The_princess_bride">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#William_Goldman"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The princess bride</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Virginia_Woolf -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Virginia_Woolf">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#William_Goldman -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#William_Goldman">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Yaser_Mustafa -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Yaser_Mustafa">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Zadie_Smith -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Zadie_Smith">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#la_sombra_del_viento -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#la_sombra_del_viento">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carlos_Ruiz_Zafón"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">La sombra del viento</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#1q84 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#1q84">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Haruki_Murakami"/>
+        <genre rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Fiction1</genre>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">1q84</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_room_of_one&apos;s_own -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_room_of_one&apos;s_own">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Virginia_Woolf"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A room of one&apos;s own</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Are_We_Smart_Enough_to_Know_How_Smart_Animals_Are? -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Are_We_Smart_Enough_to_Know_How_Smart_Animals_Are?">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Frans_de_Waal"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Are We Smart Enough to Know How Smart Animals Are?</title>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#life-changing_magic:_a_journal_spark_joy_every_day -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#life-changing_magic:_a_journal_spark_joy_every_day">
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
+        <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo"/>
+        <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Life-changing magic: a journal spark joy every day</title>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+

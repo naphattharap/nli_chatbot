@@ -1,22 +1,84 @@
 {
-    "req_recommend_by_genre": 
-        {	"next_action": "",
-            "slots": ["genre_name", "attr2"],
-            "match_words": "have, want, recommend, book, genre, category, type" 
-        },
-    "req_recommend_by_author": 
-        {	
-        	"next_action": "",
-        	"slots": ["author_name"],
-        	"match_words": "have, want, recommend, book, author, writer, write"
-        	
-        },
-    "statement_find_book": 
-        {	
-        	"respond_statement": "ask_for_find_book_criteria",
-        	"next_action": "wait_for_slot",
-        	"slots_choices": ["author", "genre", "category", "title"],
-        	"slots": ["find_by"],
-        	"match_words": "look, book"
-        }
+	"statement_find_book_by_title": {
+		"respond_statement": "",
+		"next_action": "fill_slots_book_title",
+		"match_words": "want, read, find, book, name, title"
+	},
+	"fill_slots_book_by_title": {
+		"slots": {
+			"book_title": ""
+		},
+		"respond_statement": "",
+		"next_action": "",
+		"match_words": ""
+	},
+	"req_find_book_by_title": {
+		"respond_statement": "",
+		"next_action": "",
+		"fill_slots_action": "fill_slots_book_by_title",
+		"slots": {
+			"book_title": ""
+		},
+		"match_words": "have, want, recommend, book, title, name"
+	},
+	
+	"req_recommend_by_genre": {
+		"next_action": "",
+		"respond_statement": "result_req_recommend_by_genre",
+		"slots": {
+			"genre": ""
+		},
+		"match_words": "have, want, recommend, book, genre, category, type"
+	},
+	"req_recommend_by_author": {
+		"respond_statement": "",
+		"next_action": "",
+		"slots": [
+			"author_name"
+		],
+		"match_words": "have, want, recommend, book, author, writer, write"
+	},
+	"req_find_book_by_author": {
+		"respond_statement": "",
+		"next_action": "",
+		"slots": [
+			"author_name"
+		],
+		"match_words": "have, want, recommend, book, author, writer, write"
+	},
+	"statement_find_book": {
+		"respond_statement": "ask_for_find_book_criteria",
+		"next_action": "fill_slots_find_book_criteria",
+		"match_words": "look, book"
+	},
+	"fill_slots_find_book_criteria": {
+		"slots": {
+			"find_by": [
+				"author",
+				"genre"
+			]
+		},
+		"respond_statement": "",
+		"next_action": "req_recommend_by_@find_by",
+		"match_words": ""
+	},
+	"ask_for_book_genre": {
+		"respond_statement": "ask_for_book_genre",
+		"next_action": "req_recommend_by_genre",
+		"slots": [
+			"genre_name"
+		],
+		"match_words": ""
+	},
+	"res_statement_find_book": {
+		"request_intent": "statement_find_book",
+		"respond_statement": "result_statement_find_book",
+		"slots": [
+			"@search_entity",
+			"@result"
+		],
+		"next_action": "",
+		"slots_choices": [],
+		"match_words": ""
+	}
 }
