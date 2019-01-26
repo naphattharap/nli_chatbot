@@ -290,7 +290,7 @@
     <!-- http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_manual_for_cleaning_women -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#A_manual_for_cleaning_women">
-        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Book"/>
         <hasAuthor rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo"/>
         <title rdf:datatype="http://www.w3.org/2001/XMLSchema#string">A manual for cleaning women</title>
     </owl:NamedIndividual>
@@ -301,6 +301,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Alexandra_Horowitz">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alexandra Horowitz</name>
     </owl:NamedIndividual>
     
 
@@ -339,6 +340,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carl_Safina">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carl Safina</name>
     </owl:NamedIndividual>
     
 
@@ -347,6 +349,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Carlos_Ruiz_Zafón">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carlos Ruiz Zafón</name>
     </owl:NamedIndividual>
     
 
@@ -355,6 +358,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Ernest_Hemingway">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ernest Hemingway</name>
     </owl:NamedIndividual>
     
 
@@ -373,6 +377,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Frans_de_Waal">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Frans de Waal</name>
     </owl:NamedIndividual>
     
 
@@ -381,6 +386,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#George_Orwell">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">George Orwell</name>
     </owl:NamedIndividual>
     
 
@@ -399,6 +405,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Haruki_Murakami">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Haruki Murakami</name>
     </owl:NamedIndividual>
     
 
@@ -417,6 +424,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JK_Rowling">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JK Rowling</name>
     </owl:NamedIndividual>
     
 
@@ -425,6 +433,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#JRR_Tolkien">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">JRR Tolkien</name>
     </owl:NamedIndividual>
     
 
@@ -433,6 +442,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Jane_Austen">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jane Austen</name>
     </owl:NamedIndividual>
     
 
@@ -451,6 +461,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Lucia_Berlin">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lucia Berlin</name>
     </owl:NamedIndividual>
     
 
@@ -459,6 +470,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Marie_Kondo">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Marie Kondo</name>
     </owl:NamedIndividual>
     
 
@@ -467,6 +479,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Maya_Angelou">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Maya Angelou</name>
     </owl:NamedIndividual>
     
 
@@ -515,6 +528,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Virginia_Woolf">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Virginia Woolf</name>
     </owl:NamedIndividual>
     
 
@@ -523,6 +537,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#William_Goldman">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">William Goldman</name>
     </owl:NamedIndividual>
     
 
@@ -531,6 +546,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Yaser_Mustafa">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Yaser S  Abu Mostafa</name>
     </owl:NamedIndividual>
     
 
@@ -539,6 +555,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Zadie_Smith">
         <rdf:type rdf:resource="http://www.semanticweb.org/jessie/ontologies/2018/10/Books#Author"/>
+        <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Zadie Smith</name>
     </owl:NamedIndividual>
     
 
@@ -595,5 +612,5 @@
 
 
 
-<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
 
