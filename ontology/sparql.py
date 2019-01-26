@@ -18,10 +18,10 @@ class QueryManager:
     def __init__(self):
         # ontology and instances information are in this file
         self.g = Graph()
-        self.g.parse("ontology/ontology.owl")
+        self.g.parse("ontology.owl")
         # self.g.serialize(format="n3")
         self.book_ontology_prefix = " PREFIX nli: <http://www.semanticweb.org/jessie/ontologies/2018/10/Books#> "
-        self.goole_api_service = GoogleBookApiService()
+        self.goole_api = GoogleBookApiService()
 
     def query_result(self, query_statement):
         """
@@ -40,32 +40,19 @@ class QueryManager:
         """
         Call to google API to search for books by genre.
         """      
-        result = self.goole_api_service.recommend_book_by_genre_intent(genre)
-        return result
+        results = self.goole_api.google_book_by_author_intent(genre, 5)
+        logging.debug(results)
+        return results
     
     def recommend_book_by_author_intent(self, author):
         """
         Call to google API to search for books by author name.
         """
-        result = self.goole_api_service.recommend_book_by_author_intent(author)
-        return result
-
-    def find_book_by_title(self, book_title):
-        """
-        Parse book title to SPARQL then query from ontology and convert result to array.
-        """
-        query_statement = self.book_ontology_prefix + """
-                        SELECT ?name WHERE {  
-                             ?book nli:hasAuthor ?who .
-                             ?who nli:name ?name .
-                             ?book nli:title ?title .
-                        FILTER regex(?title,\"""" + book_title + """\","i")
-                         }"""
-
-        results = self.query_result(query_statement)
+        results = self.goole_api.google_book_by_author_intent(author, 5)
+        logging.debug(results)
         return results
-        
-    def find_book_by_author(self, author):
+    
+    def find_book_by_author_intent(self, author):
         # Query by Book title
         query_statement = self.book_ontology_prefix + """
                         SELECT ?title ?genre ?name WHERE {  
@@ -77,13 +64,41 @@ class QueryManager:
                          }"""
 
         results = self.query_result(query_statement)
-
+    
+        if len(results) == 0:
+            results = self.goole_api.google_book_by_author_intent(author, 5)
+        logging.debug(results) 
         return results
 
+    def find_book_by_title_intent(self, book_title):
+        """
+        Parse book title to SPARQL then query from ontology and convert result to array.
+        """
+        query_statement = self.book_ontology_prefix + """
+                        SELECT ?name WHERE {  
+                             ?book nli:hasAuthor ?who .
+                             ?who nli:name ?name .
+                             ?book nli:title ?title .
+                        FILTER regex(?title,\"""" + book_title + """\","i")
+                         }"""
+        
+        results = self.query_result(query_statement)
+        if len(results) == 0:
+            results = self.goole_api.google_book_by_title_intent(book_title, 5)
+        logging.debug(results) 
+        return results
 
-q = QueryManager()        
-q.find_book_by_author("haruki")
-q.find_book_by_title("manual for cleaning")
+# q = QueryManager()        
+# print()
+# print("------------------------")
 # q.recommend_book_by_genre_intent("Fiction")
+# print()
+# print("------------------------")
 # q.recommend_book_by_author_intent("Rowling")
+# print()
+# print("------------------------")
+# q.find_book_by_author_intent("Yaser")
+# print()
+# print("------------------------")
+# q.find_book_by_title_intent("Clean")
 
