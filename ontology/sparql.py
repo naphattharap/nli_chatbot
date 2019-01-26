@@ -22,6 +22,7 @@ class QueryManager:
         return list(self.g.query(query_statement))
     
     def query_result(self, query_statement):
+        logging.debug("query %s", query_statement)
         q_result = self.query(query_statement)
         results = []
         for obj in q_result:
@@ -38,8 +39,8 @@ class QueryManager:
         # https://www.googleapis.com/books/v1/volumes?q=subject:Art
         genre = req_params["genre"]
         googleBook = GoogleBookApiService()
-        result = googleBook.search_by_genre(genre)
-        return result
+        # result = googleBook.search_by_genre(genre)
+        # return result
         
     def analyze_spo(self, g):
         for subj, pred, obj in g:
@@ -47,12 +48,12 @@ class QueryManager:
             if (subj, pred, obj) not in g:
                 raise Exception("It better be!")
 
-    def find_book_by_author(self, book_title):
+    def find_book_by_title(self, book_title):
         # Query by Book title
         query_statement = self.book_ontology_prefix + """
-                        SELECT ?title ?name WHERE {  
+                        SELECT ?title ?author WHERE {  
                              ?book nli:hasAuthor ?who .
-                             ?who nli:name ?name .
+                             ?who nli:name ?author .
                              ?book nli:title ?title .
                         FILTER regex(?title,\"""" + book_title + """\","i")
                          }"""
@@ -61,14 +62,14 @@ class QueryManager:
         print(results)
         return results
         
-    def find_book_by_title(self, author):
+    def find_book_by_author(self, author):
         # Query by Book title
         query_statement = self.book_ontology_prefix + """
                          SELECT ?title ?genre WHERE {  
                                ?book nli:hasAuthor ?author .
                                ?book nli:title ?title .
                                ?book nli:genre ?genre .
-                        FILTER regex(?name,\"""" + author + """\","i")
+                        FILTER regex(?author,\"""" + author + """\","i")
                          }"""
         # self.query(query_statement)
         # print(self.g.query(query_statement))
