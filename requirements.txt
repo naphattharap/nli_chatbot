@@ -7,3 +7,4 @@ pyobjc==5.1.2
 PyAudio==0.2.11
 textacy==0.6.2
 google-api-python-client==1.7.7
+rdflib==4.2.2
