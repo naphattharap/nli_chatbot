@@ -42,18 +42,16 @@ class GoogleBookApiService:
                 book["description"] = ""
             
             if 'categories' in volumn_info:
-                book["categories"] = volumn_info["categories"]
+                book["genre"] = volumn_info["categories"]
             else:
-                book["categories"] = ""
+                book["genre"] = ""
             
             if 'retailPrice' in sale_info:
                 retail_price = sale_info["retailPrice"]
-                book["retail_price"] = retail_price["amount"]
-                book["currency_code"] = retail_price["currencyCode"]
+                book["price"] = str(retail_price["amount"]) + retail_price["currencyCode"]
             else:
-                book["retail_price"] = ""
-                book["currency_code"] = ""
-            
+                book["price"] = ""
+
             logging.debug("book info: %s", book)
             book_list.append(book)
         
@@ -67,14 +65,14 @@ class GoogleBookApiService:
         base_api_link = "https://www.googleapis.com/books/v1/volumes?q=intitle:" + title + "&maxResults=" + str(max_result)
         book_list = self.get_json_respond(base_api_link)
         
-        results = []
-        for book in book_list:
-            title = book["title"]
-            if title != "":
-                results.append(title)
-        
-        logging.debug("recommend_book_by_title_intent: %s", results)
-        return results
+#         results = []
+#         for book in book_list:
+#             title = book["title"]
+#             if title != "":
+#                 results.append(title)
+#         
+#         logging.debug("recommend_book_by_title_intent: %s", results)
+        return book_list
     
     def google_book_by_genre_intent(self, genre, max_result):  
         """
@@ -83,14 +81,14 @@ class GoogleBookApiService:
         base_api_link = "https://www.googleapis.com/books/v1/volumes?q=subject:" + genre + "&maxResults=" + str(max_result)
         book_list = self.get_json_respond(base_api_link)
         
-        results = []
-        for book in book_list:
-            title = book["title"]
-            if title != "":
-                results.append(title)
-                
-        logging.debug("recommend_book_by_genre_intent: %s", results)
-        return results
+#         results = []
+#         for book in book_list:
+#             title = book["title"]
+#             if title != "":
+#                 results.append(title)
+#                 
+#         logging.debug("recommend_book_by_genre_intent: %s", results)
+        return book_list
     
     def google_book_by_author_intent(self, author, max_result):
         """
@@ -99,13 +97,13 @@ class GoogleBookApiService:
         base_api_link = "https://www.googleapis.com/books/v1/volumes?q=inauthor:" + author + "&maxResults=" + str(max_result)
         book_list = self.get_json_respond(base_api_link)
         
-        results = []
-        for book in book_list:
-            title = book["title"]
-            if title != "":
-                results.append(title)
-        logging.debug("recommend_book_by_author_intent: %s", results)
-        return results
+#         results = []
+#         for book in book_list:
+#             title = book["title"]
+#             if title != "":
+#                 results.append(title)
+#         logging.debug("recommend_book_by_author_intent: %s", results)
+        return book_list
   
 # googleBook = GoogleBookApiService() 
 # googleBook.google_book_by_title_intent("Harry Potter", 5)

@@ -14,50 +14,60 @@ class TextParser():
         # load only once when parser is initialized.
         self.nlp = spacy.load('en_core_web_sm')
         self.intents = self.read_intent()
-        self.threshold_intent = 0.7
-        self.books_genre = ["cook", "comic", "children", "art", "history", "science"]
-        self.books_title = ["Harry Potter"]
-        self.books_author = ["Mostafa", "John", "Yaser"]
+        self.books_genre = ["action and adventure", "alternate history", "anthology", "art",
+                            "autobiography", "biography", "book review", "chick lit",
+                            "children's literature", "classic", "comic book", "comics",
+                            "coming-of-age", "cookbook", "crime", "detective", "diary",
+                            "dictionary", "drama", "encyclopedia", "economics", "fable",
+                            "fairytale", "fan fiction", "fantasy", "fiction", "folklore",
+                            "graphic novel", "guide", "health", "historical fiction",
+                            "history", "horror", "humor", "journal", "journalism", "legend",
+                            "mathematics", "magical realism", "math", "memoir", "meta fiction",
+                            "mystery", "mythology", "mythopoeia", "non fiction", "none fiction",
+                            "non-fiction", "paranormal romance", "picture book", "poetry",
+                            "political thriller", "prayer", "realistic fiction", "reference book",
+                            "religion, spirituality, and new age", "review", "romance", "satire",
+                            "science fiction", "science", "self help book", "self help",
+                            "short story", "shriller", "sociology", "suspense", "textbook",
+                            "travel", "true crime", "young adult"]
+        self.books_title = ["1q84", "a manual for cleaning women", "a room of one's own", "and still i rise",
+                            "animal farm", "are we smart enough to know how smart animals are?",
+                            "beyond words: what animals think and feel", "for whom the bell tolls",
+                            "harry potter", "he lord of the rings", "inside of a dog", "la sombra del viento",
+                            "learning from data", "life changing magic: a journal spark joy every day",
+                            "pride and prejudice", "swing time", "the princess bride"]
+        self.books_author = ["alexandra", "horowitz", "alexandra horowitz", "carl", "safina", "carl safina", "carlos ruiz zafón",
+                             "ernest", "hemingway",
+                             "frans de waal", "george", "orwell", "george orwell", "haruki", "murakami", "haruki murakami", "jane", "austen", "jane austen", "jk rowling",
+                             "jrr tolkien", "lucia", "berlin", "marie kondo", "maya angelou", "virginia woolf",
+                             "william goldman", "yaser", "mostafa", "yaser mostafa", "zadie smith"]
         
     def read_intent(self):
         intents_data = []
-        with open('intents.json') as f:
+        with open('../chatbot/parser/intents.json') as f:
             # with open('contents/intents.json') as f:
             intents_data = json.load(f)
             if logging.getLogger().isEnabledFor(logging.DEBUG):
                 for d in intents_data:
                     logging.debug(d)
         return intents_data
-        
-    def get_intent(self, intent_key):
-        return self.intents[intent_key]
 
     def process_entity_label(self, token):
         """
         Return entity label for Author, Book Title or Genre
         The result can be used as a slot key to fill in given token the slot
         """
-        if token in self.books_genre:
+        lower_token = token.lower()
+        
+        if lower_token in self.books_genre:
             return "genre"
         
-        if token in self.books_title:
+        if lower_token in self.books_title:
             return "title"
         
-        if token in self.books_author:
-            return "author_name"
+        if lower_token in self.books_author:
+            return "author"
         return ""
-    
-    def process_auto_fill_slot(self, doc, slots):
-        """
-        Process doc for auto filling in given slots
-        """
-        for token in doc:
-            if token.pos_ == "NOUN":
-                target_slot_key = self.process_entity_label(token.text)
-                if target_slot_key != "":
-                    for slot_key, slot_value in slots.items():
-                        if slot_value == "" and slot_key == target_slot_key:
-                            slots[slot_key] = token.text
 
     def infer_intent(self, sentence):
         """
@@ -72,35 +82,43 @@ class TextParser():
             if ent_label not in input_main_words:
                 input_main_words.append(ent_label)
             
-        input_match_words = ",".join(input_main_words)
-        logging.debug("input keywords %s", input_match_words)
+        input_match_words_str = ",".join(input_main_words)
+        
+        logging.debug("input keywords %s", input_match_words_str)
         # find similarity in intent with highest score.
-        temp_score = 0
         target_intent = ""
         data = self.intents
-
+        
+        print("from user: ", input_match_words_str)
+        
+        max_matched_word = 0
         for intent in data:
             match_words = data[intent]["match_words"]
+            print("in intent: ", match_words)
+            set_a = set(input_main_words)
+            set_b = set(match_words.split(","))
+            
+            matched = set_a & set_b
+            len_matched = len(matched)
+            print("number of matched: ", len_matched)
             if match_words == "": 
                 # skip when the match word 
                 continue
-            
-            doc_intent_match_words = self.nlp(match_words)
-            doc_input_match_words = self.nlp(input_match_words)
-            similarity_score = doc_input_match_words.similarity(doc_intent_match_words)
-            
-            if temp_score < similarity_score:
+
+            if max_matched_word < len_matched:
                 target_intent = intent
-                temp_score = similarity_score
+                max_matched_word = len_matched
         
-        if self.threshold_intent <= temp_score:
+        if max_matched_word >= 2:
             intent = self.intents[target_intent]
+            
         else:
             intent = ""
+            target_intent = ""
         
         logging.debug("intent %s", target_intent) 
-        print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
-        return target_intent
+        # print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
+        return target_intent       
     
     def get_main_words(self, doc):
         words = []   
@@ -113,7 +131,3 @@ class TextParser():
                 if label != "" and label not in words:
                     words.append(label)
         return words
-               
-# p = TextParser()
-# p.infer_intent("Any recommend book written by Yaser")
-# p.infer_intent("I'm looking for a book about national language");
