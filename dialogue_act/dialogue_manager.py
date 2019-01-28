@@ -172,4 +172,4 @@ class DialogueManager:
             title = slots["title"]
             dict_results = self.query.find_book_by_title_intent(title, find_max_results)
             return self.get_respond_find_books(default_res_key, dict_results)
-        
+
