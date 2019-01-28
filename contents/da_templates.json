@@ -51,24 +51,24 @@
 		"Famous books from {} are {}"
 	],
 	"response_find_book_by_author_intent" : [
-		"This is information about {0}. Would you like to see more books?"
+		"This is information about {0}."
 	],
 	"response_find_book_by_title_intent": [
-		"This is information about {title}. The author is {authors} and it is in genre {genre} Would you like to see more books?"
+		"This is information about {title}. The author is {authors} and it is in genre {genre}."
 	],
 	"response_find_book_by_title_intent_ontology": [
-		"This is information about {title}. The author is {authors}, it's in genre {genre}. Would you like to see more books?"
+		"This is information about {title}. The author is {authors}, it's in genre {genre}."
 	],
 	"response_find_book_by_author_intent_ontology": [
 		"Here are results from our ontology for finding book by  {0}, {1}, {2}"
 	],
 		"response_find_book_by_title_intent_google": [
-		"This is information about {title}. The author is {authors}, it's in genre {genre}. Would you like to see more books?"
+		"This is information about {title}. The author is {authors}, it's in genre {genre}."
 	],
 	"response_find_book_by_author_intent_google": [
-		"I found {title} on google book from {authors}. It's' nice one in genre {genre}, description {description} and price {price}"
+		"I found {title} on google book from {authors}. It's nice one in genre {genre}, description {description} and price {price}"
 	],
 	"response_find_book_by_title_intent_google": [
-		"I found {title} on google book from {authors}. It's' nice one in genre {genre}, description {description} and price {price}"
+		"I found {title} on google book from {authors}. It's nice one in genre {genre}, description {description} and price {price}"
 	]
 }

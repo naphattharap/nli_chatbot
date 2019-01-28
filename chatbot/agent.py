@@ -79,14 +79,15 @@ class ChatBotAgent:
         
         while True:
             try:
-#                 if  self.speaker.speak(greeting_msg):
-#                     pass
+                if  greeting == False:
+                    self.speaker.speak(greeting_msg)
+                    greeting = True
  
                 # Listen voice from microphone and generate sentence.
                 sentence = self.listener.listen()
                 if sentence == "Error":
                     continue
-                
+                 
                 # recommend by author
                 # sentence = "Do you have any recommended books written by Mostafa"
                 
@@ -103,21 +104,22 @@ class ChatBotAgent:
                 # sentence = "Give me a book from Yaser"
                 
                 # Check sentence with trained model for dialogue act.
+                # self.speaker.speak("user asked: " + sentence)
                 da_result = self.da.predict(sentence);
                 print("DA type --> ", da_result)
                                 # If type is end of conversation, stop program.
-                
-                if 'current_action' in self.session and self.session["current_action"] == "fill_slot":
+                is_flling_in_slot_action = 'current_action' in self.session and self.session["current_action"] == "fill_slot"
+                if is_flling_in_slot_action:
                     # fill slot from sentence
                     self.filled_slots[self.session["current_filling_slot"]] = sentence
                 
-                if da_result == "Bye":
+                if da_result == "Bye" and not is_flling_in_slot_action:
                     response_msg = self.da.respond("res_bye")
                     self.speaker.speak(response_msg)
                     self.reset_session()
                     continue
                 
-                elif da_result == "Greet":
+                elif da_result == "Greet" and not is_flling_in_slot_action:
                     response_msg = self.d_manager.get_respond_message("res_greeting")
                     self.speaker.speak(response_msg)
                     self.reset_session()
