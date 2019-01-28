@@ -1,3 +1,0 @@
-user: 	Do you have any recommended book about art?
-bot:	yes, please wait for a second... here are books that get high review score recently {0}
-user:	

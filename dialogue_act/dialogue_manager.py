@@ -1,7 +1,6 @@
 import json
 import logging
 import random
-from chatbot.parser.text_parser import TextParser
 from ontology.sparql import QueryManager
 #  pip install ipython
 logging.getLogger().setLevel(logging.DEBUG)
@@ -46,17 +45,119 @@ class DialogueManager:
         
         return msg
     
-    def execute_intent(self, req_da):
-        logging.debug("executing...", req_da)
-        intent_key = req_da["intent"]
-        req_slots = req_da["slots"]
-        if intent_key == "req_recommend_by_genre":
-            return self.query.get_books_by_genre(req_slots)
-
-        elif intent_key == "req_recommend_by_author":
-            return self.query.get_books_by_author(req_slots)
+    def get_respond_messages_books(self, respond_msg_key, params):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+        if len(params) == 3:
+            # result from ontology
+            respond_msg_key = respond_msg_key + "_ontology"
+            messages = self.template_sentences[respond_msg_key]
         
-        elif intent_key == "req_find_book_by_title": 
+        n_msgs = len(messages)
+        msg = ""
+        if isinstance(messages, list) and n_msgs > 1:
+            rand_num = random.randint(0, n_msgs - 1)
+            msg = messages[rand_num]
+        else:
+            msg = messages[0]
+        
+        for index, value in params.items():
+            msg = msg.replace("{" + str(index) + "}", value)
+        
+        return msg
+    
+    def get_respond_recommend_books_by_author(self, respond_msg_key, author, books):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+        book_titles = []
+        for book in books:
+            book_titles.append(book["title"])
+
+        str_books = ",".join(book_titles)
+        
+        messages = self.template_sentences[respond_msg_key]
+        template = random.choice(messages)
+        resp_msg = template.format(author, str_books)
+
+        return resp_msg
+    
+    def get_respond_recommend_books_by_genre(self, respond_msg_key, genre, books):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+        book_titles = []
+        for book in books:
+            book_titles.append(book["title"])
+
+        str_books = ",".join(book_titles)
+        
+        messages = self.template_sentences[respond_msg_key]
+        template = random.choice(messages)
+        resp_msg = template.format(genre, str_books)
+
+        return resp_msg
+    
+    def get_respond_find_books_by_author(self, respond_msg_key, author, books):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+        book_titles = []
+        for book in books:
+            book_titles.append(book["title"])
+
+        str_books = ",".join(book_titles)
+        
+        messages = self.template_sentences[respond_msg_key]
+        template = random.choice(messages)
+        resp_msg = template.format(author, str_books)
+
+        return resp_msg
+    
+    def get_respond_find_books_by_title(self, respond_msg_key, title, books):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+        book_titles = []
+        for book in books:
+            book_titles.append(book["title"])
+
+        str_books = ",".join(book_titles)
+        
+        messages = self.template_sentences[respond_msg_key]
+        template = random.choice(messages)
+        resp_msg = template.format(title, str_books)
+
+        return resp_msg
+    
+    def execute_intent(self, req_da):
+        logging.debug("executing...%s", req_da)
+        intent_key = req_da["intent"]
+        slots = req_da["slots"]
+        
+        default_res_key = "response_" + intent_key
+        rec_max_results = 5
+        find_max_results = 1
+        if intent_key == "recommend_book_by_genre_intent":
+            genre = slots["genre"]
+            dict_results = self.query.recommend_book_by_genre_intent(genre, rec_max_results)
+            return self.get_respond_recommend_books_by_genre(default_res_key, genre, dict_results)
+
+        elif intent_key == "recommend_book_by_author_intent":
+            author = slots["authors"]
+            dict_results = self.query.recommend_book_by_author_intent(author, rec_max_results)
+            return self.get_respond_recommend_books_by_author(default_res_key, author, dict_results)
+        
+        elif intent_key == "find_book_by_author_intent": 
             # change function later  
-            return self.query.query_by_book_title(req_slots)
+            authors = slots["authors"]
+            dict_results = self.query.find_book_by_author_intent(authors, find_max_results)
+            return self.get_respond_find_books_by_author(default_res_key, authors, dict_results)
+        
+        elif intent_key == "find_book_by_title_intent": 
+            # change function later  
+            title = slots["title"]
+            dict_results = self.query.find_book_by_title_intent(title, find_max_results)
+            return self.get_respond_find_books_by_title(default_res_key, title, dict_results)
         

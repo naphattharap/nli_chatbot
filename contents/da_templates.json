@@ -19,13 +19,6 @@
 		"What is your favorite author?",
 		"What is an author name?"
 	],
-	"result_statement_find_book": [
-		"This is informatin about {0}. Would you like to see more books?"
-	],
-	"result_req_recommend_by_genre": [
-		"yes, here are books {0}",
-		"That's nice genre, here are books {0}"
-	],
 	"res_greeting": [
 		"I am fine. Thank you and you?",
 		"I am good. Thank you for asking?"
@@ -33,5 +26,28 @@
 	"res_bye": [
 		"Bye, Have a nice day and hope to see you soon.",
 		"Bye, Hope to see you again"
+	],
+	"response_find_book_by_author_intent":[
+		"Recommended books written by {0} are {1}"
+	],
+	"response_recommend_book_by_genre_intent": [
+		"Here are recommended books in genre {}, {}",
+		"{}'s nice genre, here are books {}"
+	],
+	"response_recommend_book_by_author_intent": [
+		"Here are books written by {} {}",
+		"Famous books from {} are {}"
+	],
+	"response_find_book_by_author_intent" : [
+		"This is information about {0}. Would you like to see more books?"
+	],
+	"response_find_book_by_title_intent": [
+		"This is information about {0}. Would you like to see more books?"
+	],
+	"response_find_book_by_title_intent_ontology": [
+		"This is information about {0}. Would you like to see more books?"
+	],
+	"response_find_book_by_author_intent_ontology": [
+		"Here are results from our ontology for finding book by  {0}, {1}, {2}"
 	]
 }

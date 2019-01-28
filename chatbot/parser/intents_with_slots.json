@@ -1,0 +1,18 @@
+{
+	"find_book_by_author_intent": {
+		"match_words": "want,tell,find,look,book,detail,information,write,author,writer",
+		"slots": ["author"]
+	},
+	"find_book_by_title_intent": {
+		"match_words": "want,tell,find,look,book,detail,information,title",
+		"slots": ["title"]
+	},
+	"recommend_book_by_genre_intent": {
+		"match_words": "have,want,recommend,book,genre,fiction,non fiction, category, type",
+		"slots": ["genre"]
+	},
+	"recommend_book_by_author_intent": {
+		"match_words": "have,want,recommend,book,author,writer,write",
+		"slots": ["author"]
+	}
+} 

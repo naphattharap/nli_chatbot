@@ -35,20 +35,31 @@ class GoogleBookApiService:
             sale_info = item["saleInfo"]
             book = {}
             book["title"] = volumn_info["title"]
-            book["authors"] = volumn_info["authors"]
+            
+            if 'authors' in volumn_info:
+                if len(volumn_info["authors"]) > 0:
+                    book["authors"] = ",".join(volumn_info["authors"])
+                else:
+                    book["authors"] = volumn_info["authors"]
+            else:
+                book["authors"] = ""
+
             if 'description' in volumn_info:
                 book["description"] = volumn_info["description"]
             else:
                 book["description"] = ""
             
             if 'categories' in volumn_info:
-                book["genre"] = volumn_info["categories"]
+                if len(volumn_info["categories"]) > 0:
+                        book["genre"] = ",".join(volumn_info["categories"])
+                else:
+                        book["genre"] = volumn_info["categories"]
             else:
                 book["genre"] = ""
             
             if 'retailPrice' in sale_info:
                 retail_price = sale_info["retailPrice"]
-                book["price"] = str(retail_price["amount"]) + retail_price["currencyCode"]
+                book["price"] = str(retail_price["amount"]) + " " + retail_price["currencyCode"]
             else:
                 book["price"] = ""
 
