@@ -31,11 +31,11 @@
 		"What is your favorite author?",
 		"What is an author name?"
 	],
-	"res_greeting": [
+	"response_greeting": [
 		"I am fine. Thank you and you?",
 		"I am good. Thank you for asking?"
 	],
-	"res_bye": [
+	"response_bye": [
 		"Bye, Have a nice day and hope to see you soon.",
 		"Bye, Hope to see you again"
 	],
@@ -50,7 +50,7 @@
 		"Here are books written by {} {}",
 		"Famous books from {} are {}"
 	],
-	"response_find_book_by_author_intent" : [
+	"response_find_book_by_author_intent": [
 		"This is information about {0}."
 	],
 	"response_find_book_by_title_intent": [

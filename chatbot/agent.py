@@ -84,12 +84,12 @@ class ChatBotAgent:
                     greeting = True
  
                 # Listen voice from microphone and generate sentence.
-                sentence = self.listener.listen()
-                if sentence == "Error":
-                    continue
+#                 sentence = self.listener.listen()
+#                 if sentence == "Error":
+#                     continue
                  
                 # recommend by author
-                # sentence = "Do you have any recommended books written by Mostafa"
+                sentence = "Do you have any recommended books written by Mostafa"
                 
                 # recommend by genre
                 # sentence = "I would like to read books about psychology, do you have any recommendation"
@@ -114,13 +114,14 @@ class ChatBotAgent:
                     self.filled_slots[self.session["current_filling_slot"]] = sentence
                 
                 if da_result == "Bye" and not is_flling_in_slot_action:
-                    response_msg = self.da.respond("res_bye")
+                    # TODO Jess  
+                    response_msg = self.d_manager.get_respond_message("response_bye")
                     self.speaker.speak(response_msg)
                     self.reset_session()
                     continue
                 
                 elif da_result == "Greet" and not is_flling_in_slot_action:
-                    response_msg = self.d_manager.get_respond_message("res_greeting")
+                    response_msg = self.d_manager.get_respond_message("response_greeting")
                     self.speaker.speak(response_msg)
                     self.reset_session()
                     continue
