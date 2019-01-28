@@ -23,12 +23,7 @@ class DialogueManager:
         
     def get_respond_message(self, respond_msg_key):
         messages = self.template_sentences[respond_msg_key]
-        n_msgs = len(messages)
-        if isinstance(messages, list) and n_msgs > 1:
-            rand_num = random.randint(0, n_msgs - 1)
-            return messages[rand_num]
-        else:
-            return messages[0]
+        return random.choice(messages)
         
     def get_respond_message_with_params(self, respond_msg_key, params):
         messages = self.template_sentences[respond_msg_key]
@@ -115,20 +110,37 @@ class DialogueManager:
 
         return resp_msg
     
-    def get_respond_find_books_by_title(self, respond_msg_key, title, books):
+    def get_respond_find_books(self, respond_msg_key, books):
         """
         param is array of dictionary object {title, authors, genre, description, price}
         """
-        book_titles = []
-        for book in books:
-            book_titles.append(book["title"])
+#         book_titles = []
+#         for book in books:
+#             book_titles.append(book["title"])
+# 
+#         str_books = ",".join(book_titles)
+        book = {}
+        if len(books) == 0:
+            return ""
+        if len(books) > 0:
+            book = books[0]
 
-        str_books = ",".join(book_titles)
-        
-        messages = self.template_sentences[respond_msg_key]
+        messages = self.template_sentences[respond_msg_key + "_" + book["source"]]
         template = random.choice(messages)
-        resp_msg = template.format(title, str_books)
-
+        if template != "":
+            resp_msg = template.replace("{authors}", book["authors"]).replace("{title}", book["title"]).replace("{genre}", book["genre"])
+            if book["description"] != "":
+                resp_msg = resp_msg.replace("{description}", book["description"])
+            else:
+                resp_msg = resp_msg.replace("{description}", "no information")
+            
+            if book["price"] != "":
+                resp_msg = resp_msg.replace("{price}", book["price"])
+            else:
+                resp_msg = resp_msg.replace("{price}", "no information")
+        
+        else:
+            resp_msg = "sorry I don't understand this."
         return resp_msg
     
     def execute_intent(self, req_da):
@@ -153,11 +165,11 @@ class DialogueManager:
             # change function later  
             authors = slots["authors"]
             dict_results = self.query.find_book_by_author_intent(authors, find_max_results)
-            return self.get_respond_find_books_by_author(default_res_key, authors, dict_results)
+            return self.get_respond_find_books(default_res_key, dict_results)
         
         elif intent_key == "find_book_by_title_intent": 
             # change function later  
             title = slots["title"]
             dict_results = self.query.find_book_by_title_intent(title, find_max_results)
-            return self.get_respond_find_books_by_title(default_res_key, title, dict_results)
+            return self.get_respond_find_books(default_res_key, dict_results)
         

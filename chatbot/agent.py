@@ -27,6 +27,7 @@ class ChatBotAgent:
         self.req_params = {}  # keep request and slots 
         self.res_params = {}  
         self.session = {} 
+        self.filled_slots = {}
 
     def init_agents(self):
         self.stt = SpeechRecognizer().init_recognizer(config.STT_GOOGLE)
@@ -43,7 +44,17 @@ class ChatBotAgent:
         self.res_params = {}  
         self.session = {} 
         self.filled_slots = {}
-        
+    
+    def init_filled_slot_obj(self, arr_slot_key):
+        for key in arr_slot_key:
+            self.filled_slots[key] = ""
+    
+    def get_empty_slot_key(self):
+        for key, value in self.filled_slots.items():
+            if value == "":
+                return key
+        return ""
+
     def start(self):
         # instance initialization
         # bot = ChatBotAgent()
@@ -64,29 +75,42 @@ class ChatBotAgent:
         current_idx_slot = 0
        
         # constant to control key
+        default_cannot_extract_intent_key = "default_unrecognize_intent"
         
         while True:
             try:
-#                 if greeting == False:
-#                     greeting = True
-#                     self.speaker.speak(greeting_msg)
-# 
-#                 # Listen voice from microphone and generate sentence.
-#                 sentence = self.listener.listen()
-#                 if sentence == "Error":
-#                     continue
+#                 if  self.speaker.speak(greeting_msg):
+#                     pass
+ 
+                # Listen voice from microphone and generate sentence.
+                sentence = self.listener.listen()
+                if sentence == "Error":
+                    continue
                 
-                # by author
-                # sentence = "Do you have any recommended books written by Yaser Mostafa"
+                # recommend by author
+                # sentence = "Do you have any recommended books written by Mostafa"
                 
-                # by genre
+                # recommend by genre
                 # sentence = "I would like to read books about psychology, do you have any recommendation"
-                # by genre
-                sentence = "Do you have any recommended books in psychological category"
+                # recommend by genre
+                # sentence = "Do you have any recommended books in psychological category"
+                # find book by title
+                # sentence = "Give me information about Harry Potter"
+                # find book by author via google api
+                # sentence = "Give me a book from Yaser Mostafa"
+                
+                # find book by author via ontology
+                # sentence = "Give me a book from Yaser"
+                
                 # Check sentence with trained model for dialogue act.
                 da_result = self.da.predict(sentence);
                 print("DA type --> ", da_result)
                                 # If type is end of conversation, stop program.
+                
+                if 'current_action' in self.session and self.session["current_action"] == "fill_slot":
+                    # fill slot from sentence
+                    self.filled_slots[self.session["current_filling_slot"]] = sentence
+                
                 if da_result == "Bye":
                     response_msg = self.da.respond("res_bye")
                     self.speaker.speak(response_msg)
@@ -107,90 +131,50 @@ class ChatBotAgent:
                     # parser.generate_response(sentence)
                     
                     # curent_intent = parser.infer_intent(sentence)
-                    if current_action == "":
+                    if not 'intent' in self.session:
                         intent_obj, target_intent = self.parser.infer_intent(sentence)
-                        self.session["intent"] = target_intent
-                        # Check there is slot to fill in.
-                        slots = intent_obj["slots"]
-                        # Check number of slot to fill in.
-                        n_slots = len(slots)
-                        # Auto-filling in slot
-                        self.filled_slots = self.parser.get_auto_fill_slots(sentence, slots)
+                        if target_intent == "":
+                            # can't recognize intent
+                            response_message = self.d_manager.get_respond_message(default_cannot_extract_intent_key)
+                            self.speaker.speak(response_message)
+                            self.reset_session()
+                            continue
                         
-                        if n_slots < len(self.filled_slots):
-                            # just respond and finish this round
-#                             respond_message = self.d_manager.get_respond_message(respond_msg_key)
-#                             self.speaker.speak(respond_message)
-#     
-#                             # perform next action
-#                             current_action = intent_obj["next_action"]
-#                             curresnt_intent = self.parser.get_intent(current_action)
-#                             logging.debug("action: %s", current_action) 
-#                             continue
-                            pass
-                        
-                        elif target_intent.startswith("recommend") or target_intent.startswith("find"):
-        
-                            # if it is request for service then check slot.
-                            # check if there is slots to fill in
-                            if n_slots != len(self.filled_slots):
-                                # ask user to fill slot
-                                empty_slot_key = self.parser.get_empty_slot(slots, self.filled_slots)
-                                self.ask_to_fill_slot(empty_slot_key)
-                                # current_action = current_intent["fill_slots_action"]
-                                
-                                continue;
-                            else:
-                                # executes target request service
-                                self.req_params["intent"] = target_intent
-                                self.req_params["slots"] = self.filled_slots
-                                # respond_msg_key = current_intent["respond_statement"]
-                                response_message = self.d_manager.execute_intent(self.req_params)
-                                self.speaker.speak(response_message)
-                                self.reset_session()
-                                # pass result to respond message
-                     
-                     # Wait for user to fill in all slots.
-                     
-                    if current_action.startswith("fill_slots_"):
-                        # if slots_choices is not empty, it means user has to select among choices
-                        slots = current_intent["slots"]
-                        n_slots = len(slots)
-                        
-                        if n_slots > 0:
-                            # require to fill in slot
-                            # keep what we are asking user to fill in.
-                            current_slot_key = list(slots)[current_idx_slot]
-                            current_slot_choice = slots[current_slot_key]
-                            n_choices = len(current_slot_choice)
-                            # check if slots come with choices and need to infer.
-                            # n_choices = len(current_intent["slots_choices"])
-                            if n_choices > 0:
-                                selected_choice = self.parser.get_matched_choice(sentence, current_slot_choice)
-                                if selected_choice == "":
-                                    # what user said can't understand by bot
-                                    default_unknow_choice = self.d_manager.get_respond_message("default_unknow_choice")
-                                    self.speaker.speak(default_unknow_choice)
-                                    self.speaker.speak(respond_message)
-                                    continue
-                                else:
-                                    # filling in the slot by selected choice
-                                    current_slot_value = selected_choice
-                                    # req_service[current_slot_key] = current_slot_value
-                                    self.filled_slots.append({current_slot_key : current_slot_value})
-                                    # parser.fill_in_slots(sentence, current_intent, current_slot, selected_choice)
-                                    
-                                    # if all slots are filled in, execute next action
-                                    if n_slots == len(self.filled_slots):
-                                        next_action = self.parser.get_next_action(current_intent)
-                                        if next_action.startwith("req_"):
-                                            self.req_params["intent"] = next_action
-                                            self.req_params["slots"] = self.filled_slots
-                                            self.d_manager.execute_intent(self.req_params)
-                                            logging.debug("take action %s", next_action)
                         else:
-                            logging.debug("open answer, no choices")
-                
+                            self.session["intent"] = target_intent
+                            # Check there is slot to fill in.
+                            slots = intent_obj["slots"]
+                            self.init_filled_slot_obj(slots)
+                            # Check number of slot to fill in.
+                            n_slots = len(slots)
+                            # Auto-filling in slot
+                            auto_filled_slot = self.parser.get_auto_fill_slots(sentence, slots)
+                            for key, value in auto_filled_slot.items():
+                                if key in self.filled_slots:
+                                    self.filled_slots[key] = value
+                        
+                    if target_intent.startswith("recommend") or target_intent.startswith("find"):                           
+                        
+                        empty_slot_key = self.get_empty_slot_key()
+                        if  empty_slot_key != "":
+                        # if n_slots < len(self.filled_slots):
+                            self.session["current_action"] = "fill_slot"
+                            # ask to fill slot
+                            self.session["current_filling_slot"] = empty_slot_key
+                            respond_message = self.d_manager.get_respond_message("ask_for_fill_slot_" + empty_slot_key)
+                            self.speaker.speak(respond_message)
+                            continue
+                        else:
+                            # all slot are filled.
+                            # executes target request service
+                            self.req_params["intent"] = target_intent
+                            self.req_params["slots"] = self.filled_slots
+                            # respond_msg_key = current_intent["respond_statement"]
+                            response_message = self.d_manager.execute_intent(self.req_params)
+                            self.speaker.speak(response_message)
+                            self.reset_session()
+                            # pass result to respond message
+                                
                 # Problem, when there is no voice come, it returns error.
                 # So we handle by continue
                 # Continue next loop if Error is returned.

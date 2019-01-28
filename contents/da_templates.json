@@ -4,12 +4,24 @@
 		"Do you have any favorite book category or any author?",
 		"Would you like to find book by genre or author?"
 	],
-	"ask_for_author_name": [
-		"What is the book's author name?'",
-		"What is the author name?"
+	"ask_for_fill_slot_authors": [
+		"Who is the author of book?",
+		"Please tell me the author name",
+		"Who is the author name?"
+	],
+	"ask_for_fill_slot_title": [
+		"What is title?",
+		"Please tell me the title"
+	],
+	"ask_for_fill_slot_genre": [
+		"What is the genre?",
+		"Please tell me the genre"
 	],
 	"default_unknow_choice": [
 		"Sorry, I do not understand what you mean"
+	],
+	"default_unrecognize_intent": [
+		"Sorry, I do not understand"
 	],
 	"ask_for_book_genre": [
 		"What is your favorite genre?",
@@ -42,12 +54,21 @@
 		"This is information about {0}. Would you like to see more books?"
 	],
 	"response_find_book_by_title_intent": [
-		"This is information about {0}. Would you like to see more books?"
+		"This is information about {title}. The author is {authors} and it is in genre {genre} Would you like to see more books?"
 	],
 	"response_find_book_by_title_intent_ontology": [
-		"This is information about {0}. Would you like to see more books?"
+		"This is information about {title}. The author is {authors}, it's in genre {genre}. Would you like to see more books?"
 	],
 	"response_find_book_by_author_intent_ontology": [
 		"Here are results from our ontology for finding book by  {0}, {1}, {2}"
+	],
+		"response_find_book_by_title_intent_google": [
+		"This is information about {title}. The author is {authors}, it's in genre {genre}. Would you like to see more books?"
+	],
+	"response_find_book_by_author_intent_google": [
+		"I found {title} on google book from {authors}. It's' nice one in genre {genre}, description {description} and price {price}"
+	],
+	"response_find_book_by_title_intent_google": [
+		"I found {title} on google book from {authors}. It's' nice one in genre {genre}, description {description} and price {price}"
 	]
 }

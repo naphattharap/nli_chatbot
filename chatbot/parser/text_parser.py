@@ -28,7 +28,7 @@ class TextParser():
                             "political thriller", "prayer", "psychology", "realistic fiction", "reference book",
                             "religion, spirituality, and new age", "review", "romance", "satire",
                             "science fiction", "science", "self help book", "self help",
-                            "short story", "shriller", "sociology", "suspense", "textbook",
+                            "short story", "shriller", "sociology", "suspense", "textbook", "psychological",
                             "travel", "true crime", "young adult", "learning language"]
         self.books_title = ["1q84", "a manual for cleaning women", "a room of one's own", "and still i rise",
                             "animal farm", "are we smart enough to know how smart animals are?",
@@ -44,8 +44,8 @@ class TextParser():
         
     def read_intent(self):
         intents_data = []
-        # with open('chatbot/parser/intents_with_slots.json') as f:
-        with open('chatbot/parser/intents.json') as f:
+        with open('chatbot/parser/intents_with_slots.json') as f:
+        # with open('chatbot/parser/intents.json') as f:
             # with open('contents/intents.json') as f:
             intents_data = json.load(f)
             if logging.getLogger().isEnabledFor(logging.DEBUG):
@@ -110,12 +110,12 @@ class TextParser():
                 target_intent = intent
                 max_matched_word = len_matched
         
-        if max_matched_word >= 2:
-            intent = self.intents[target_intent]
-            
-        else:
-            intent = ""
-            target_intent = ""
+#         if max_matched_word >= 2:
+#             intent = self.intents[target_intent]
+#             
+#         else:
+#             intent = ""
+#             target_intent = ""
         
         logging.debug("intent %s", target_intent) 
         # print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
@@ -213,10 +213,10 @@ class TextParser():
         Check if user says the required slot.
         """
         filled_slots = {}   
-
+        target_pos = ["NOUN", "ADJ"]
         doc = self.nlp(sentence)
         for token in doc:
-            if token.pos_ == "NOUN":
+            if token.pos_ in target_pos:
                 label = self.process_entity_label(token.text)
                 if label in arr_slots:
                     filled_slots[label] = token.text

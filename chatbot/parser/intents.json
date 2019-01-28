@@ -6,9 +6,9 @@
 		"match_words": "want,tell,find,look,book,detail,information,title"
 	},
 	"recommend_book_by_genre_intent": {
-		"match_words": "have,want,recommend,book,genre,fiction,non fiction, category, type"
+		"match_words": "have,want,recommend,book,genre, fiction,non fiction, category, type"
 	},
 	"recommend_book_by_author_intent": {
-		"match_words": "have,want,recommend,book,author,authors, writer,write"
+		"match_words": "have,want,recommend,book, author,authors, writer,write"
 	}
 } 

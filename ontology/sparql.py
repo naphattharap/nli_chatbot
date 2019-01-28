@@ -111,13 +111,17 @@ class QueryManager:
                                 ?book nli:title ?title .
                                 ?book nli:genre ?genre .
                         FILTER regex(?name,\"""" + author + """\","i")
-                         }"""
+                         } LIMIT 1"""
 
         q_results = self.query_result(query_statement)
         results = self.convert_ontology_result_array(q_results)
         # self.convert_res_ontology(ontology_result)
         if len(results) == 0:
             results = self.goole_api.google_book_by_author_intent(author, max_result)
+            results[0]["source"] = "google"
+        else:
+            results[0]["source"] = "ontology"
+        
         logging.debug(results) 
         return results
 
@@ -132,12 +136,17 @@ class QueryManager:
                                 ?book nli:title ?title .  
                                 ?book nli:genre ?genre .
                         FILTER regex(?title,\"""" + book_title + """\","i")
-                         }"""
+                         } LIMIT 1"""
         
+        results = {}
         q_results = self.query_result(query_statement)
         results = self.convert_ontology_result_array(q_results)
         if len(results) == 0:
             results = self.goole_api.google_book_by_title_intent(book_title, max_result)
+            results[0]["source"] = "google"
+        else:
+            results[0]["source"] = "ontology"
+        
         logging.debug(results) 
         return results
 

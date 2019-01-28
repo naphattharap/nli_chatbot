@@ -1,7 +1,7 @@
 {
 	"find_book_by_author_intent": {
 		"match_words": "want,tell,find,look,book,detail,information,write,author,writer",
-		"slots": ["author"]
+		"slots": ["authors"]
 	},
 	"find_book_by_title_intent": {
 		"match_words": "want,tell,find,look,book,detail,information,title",
@@ -13,6 +13,6 @@
 	},
 	"recommend_book_by_author_intent": {
 		"match_words": "have,want,recommend,book,author,writer,write",
-		"slots": ["author"]
+		"slots": ["authors"]
 	}
 } 
