@@ -38,10 +38,10 @@ class SpeechRecognizerABC:
 
 class GoogleRecognizer(SpeechRecognizerABC):
 
-    wait_timeout_sec = 20
+    wait_timeout_sec = 15
 
     def listen(self):
-
+        logging.debug("listening...")
         recognizer = sr.Recognizer()
 
         with sr.Microphone() as source:
@@ -57,11 +57,11 @@ class GoogleRecognizer(SpeechRecognizerABC):
                 print("Error! Could not convert speech to string!")
                 return "Error"
         except sr.UnknownValueError:
-            print("UnknownValueError Could not process that audio.")
+            # print("UnknownValueError Could not process that audio.")
             return "Error"
         except sr.WaitTimeoutError:
             print("timeout...")
-            return ""
+            return "Error Timeout"
         except sr.RequestError as e:
             print("Error! No internet connection to Google Sound Recognizer.")
         return "Error!"

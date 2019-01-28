@@ -110,12 +110,12 @@ class TextParser():
                 target_intent = intent
                 max_matched_word = len_matched
         
-#         if max_matched_word >= 2:
-#             intent = self.intents[target_intent]
-#             
-#         else:
-#             intent = ""
-#             target_intent = ""
+        if max_matched_word >= 2:
+            intent = self.intents[target_intent]
+             
+        else:
+            intent = ""
+            target_intent = ""
         
         logging.debug("intent %s", target_intent) 
         # print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
@@ -177,16 +177,12 @@ class TextParser():
                 target_intent = intent
                 max_matched_word = len_matched
         
+        logging.debug("intent %s", target_intent) 
         if max_matched_word >= 2:
             intent = self.intents[target_intent]
-            
+            return self.intents[target_intent], target_intent, max_matched_word  
         else:
-            intent = ""
-            target_intent = ""
-        
-        logging.debug("intent %s", target_intent) 
-        # print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
-        return self.intents[target_intent], target_intent  
+            return None, "", max_matched_word
     
     def get_intent(self, intent_key):
         return self.intents[intent_key] 
