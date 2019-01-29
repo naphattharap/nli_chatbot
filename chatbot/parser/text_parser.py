@@ -1,7 +1,7 @@
 import json
 import logging
 import spacy
-
+       
 logging.getLogger("TextParser").setLevel(logging.DEBUG)
 
 
@@ -46,7 +46,7 @@ class TextParser():
         intents_data = []
         with open('chatbot/parser/intents_with_slots.json') as f:
         # with open('chatbot/parser/intents.json') as f:
-            # with open('contents/intents.json') as f:
+        # with open('intents.json') as f:
             intents_data = json.load(f)
             if logging.getLogger().isEnabledFor(logging.DEBUG):
                 for d in intents_data:
@@ -240,3 +240,12 @@ class TextParser():
             return matched
         else: 
             return ""
+
+#     def get_entities(self, sentence):
+#         for sent in nltk.sent_tokenize(sentence):
+#             for chunk in nltk.ne_chunk(nltk.pos_tag(nltk.word_tokenize(sent))):
+#                 if hasattr(chunk, 'label'):
+#                     print(chunk.label(), ' '.join(c[0] for c in chunk))
+
+# t = TextParser()
+# t.get_entities("tell me about The Lord of the Rings")

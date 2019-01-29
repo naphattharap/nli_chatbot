@@ -150,6 +150,20 @@ class QueryManager:
         logging.debug(results) 
         return results
 
+    def find_book_details(self, slots, max_result):
+        """
+        Find book detail from title through google books
+        """
+        if 'title' in slots:
+            results = self.goole_api.google_book_details("intitle:" + slots["title"], max_result)
+            results[0]["source"] = "google"
+        elif 'authors' in slots:
+            results = self.goole_api.google_book_details("inauthor:" + slots["authors"], max_result)
+            results[0]["source"] = "google"            
+        
+        logging.debug(results) 
+        return results
+    
 # q = QueryManager()       
 # print()
 # print("------------------------")

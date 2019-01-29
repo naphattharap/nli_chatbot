@@ -1,4 +1,5 @@
 import logging
+import gc
 
 # from nltk.parse.featurechart import sent
 
@@ -46,6 +47,7 @@ class ChatBotAgent:
         self.session = {} 
         self.filled_slots = {}
         self.has_woken_up = False
+        gc.collect()
     
     def init_filled_slot_obj(self, arr_slot_key):
         for key in arr_slot_key:
@@ -62,7 +64,7 @@ class ChatBotAgent:
         # bot = ChatBotAgent()
         # dmngr = DialogueManager()
 
-        wakeup_words = ["hi", "hello", "hey", "hey bot", "hey book bot", "hey bookbot", "bookbot"]
+        wakeup_words = ["hi", "hello", "hey", "hey bot", "hey book bot", "hey bookbot", "bookbot", "hey sweetheart", "hey honey", "hey darling"]
         end_converstion_words = ["bye", "bye bye", "goodbye", "see you"]
         greeting = False
         greeting_msg = "Hello, how may I help you?"
@@ -79,7 +81,7 @@ class ChatBotAgent:
         target_intent = ""
         # constant to control key
         default_cannot_extract_intent_key = "default_unrecognize_intent"
-        self.speaker.speak("Now book bot is ready, please wake him up for talking")
+        logging.debug("Now book bot is ready, please wake him up for talking")
         while True:
             try:
 #                 if  greeting == False:
@@ -130,7 +132,22 @@ class ChatBotAgent:
                     self.reset_session()
                     continue
                 
-                elif da_result == "whQuestion" or da_result == "ynQuestion" or da_result == "Statement" or da_result == "nAnswer" or da_result == "yAnswer":
+                elif 'current_action' in self.session and self.session["current_action"] == "yn_answer":
+                    if da_result == "yAnswer":
+                        # Execute next action
+                        req_params = {}
+                        req_params["next_action_func"] = self.session["current_action_execute"]
+                        req_params["slots"] = self.filled_slots
+                        response_message = self.d_manager.execute_action(req_params)
+                        self.speaker.speak(response_message)
+                        self.reset_session()
+                    elif da_result == "nAnswer" or da_result == "Reject":
+                        # response to no.
+                        response_msg = self.d_manager.get_respond_message("ynQuesion_reject")
+                        self.speaker.speak(response_msg)
+                        self.reset_session()
+                else:
+                # elif da_result == "whQuestion" or da_result == "ynQuestion" or da_result == "Statement" or da_result == "nAnswer" or da_result == "yAnswer" or da_result == "Continuer" or da_result == "Clarify":
                     # Analyze entity in question find subject, predicate, object
                     # Query in ontology by SPARQL 
                     # Generate sentence
@@ -141,28 +158,27 @@ class ChatBotAgent:
                     if is_flling_in_slot_action:
                         # fill slot from sentence
                         self.filled_slots[self.session["current_filling_slot"]] = sentence
-                    
+                        
                     # curent_intent = parser.infer_intent(sentence)
                     if not 'intent' in self.session:
                         intent_obj, target_intent, max_matched_word = self.parser.get_infer_intent(sentence)
                         if target_intent == "":
-                            if target_intent == "" and max_matched_word > 1:
-                                # can't recognize intent but user said some matched keyword
-                                response_message = self.d_manager.get_respond_message("ask_for_choices_to_find")
-                                # self.session["current_action"] = "fill_slot"
-                                # self.session["slots_choice"] = ["authors", "genre", "title"]
-                                self.session["current_filling_slot"] = ""
-                                # self.speaker.speak(response_message)
-                                # self.reset_session()
-                                continue
-                            else:
-                                # can't recognize intent
-                                response_message = self.d_manager.get_respond_message(default_cannot_extract_intent_key)
-                                self.speaker.speak(response_message)
-                                self.reset_session()
-                                continue
-                        
+                            # can't recognize intent
+                            response_message = self.d_manager.get_respond_message(default_cannot_extract_intent_key)
+                            self.speaker.speak(response_message)
+                            self.reset_session()
+                            continue
+                        elif target_intent != "" and target_intent.startswith("recommend_") and max_matched_word == 2:  # 2 is throshold in text_parser
+                            # can't recognize exactly intent but user said some matched keyword
+                            response_message = self.d_manager.get_respond_message("ask_for_choices_to_recommend")
+                            self.session["current_action"] = "fill_slot"
+                            # self.session["slots_choice"] = ["authors", "genre", "title"]
+                            self.session["current_filling_slot"] = ""
+                            self.speaker.speak(response_message)
+                            # self.reset_session()
+                            continue
                         else:
+                            # Check auto fill in slot and take it from sentence if found
                             self.session["intent"] = target_intent
                             # Check there is slot to fill in.
                             slots = intent_obj["slots"]
@@ -194,7 +210,16 @@ class ChatBotAgent:
                             # respond_msg_key = current_intent["respond_statement"]
                             response_message = self.d_manager.execute_intent(self.req_params)
                             self.speaker.speak(response_message)
-                            self.reset_session()
+                            if 'pre_next_action_msg' in intent_obj and intent_obj['pre_next_action_msg'] != "":
+                                next_action_msg = intent_obj["pre_next_action_msg"]
+                                respond_message = self.d_manager.get_respond_message(next_action_msg)
+                                self.speaker.speak(respond_message)
+                                # set next action after fill slot
+                                self.session["current_action"] = "yn_answer"
+                                self.session["current_action_execute"] = intent_obj["next_action_func"]
+                            else:
+                                self.reset_session()
+                                
                             # 
                 
                 # When user said something and bot can't understand.

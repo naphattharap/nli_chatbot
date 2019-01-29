@@ -1,19 +1,26 @@
 {
 	"find_book_by_author_intent": {
 		"match_words": "want,tell,find,look,more,about,book,detail,information,write,author,authors,writer",
-		"slots": ["authors"]
+		"slots": ["authors"],
+		"pre_next_action_msg": "ynQuesion_offer_more_detail",
+		"next_action_func": "find_book_details"
 	},
 	"find_book_by_title_intent": {
 		"match_words": "want,tell,find,look,more,about,book,detail,information,title",
-		"slots": ["title"]
+		"slots": ["title"],
+		"pre_next_action_msg": "ynQuesion_offer_more_detail",
+		"next_action_func": "find_book_details"
 	},
 	"recommend_book_by_genre_intent": {
 		"match_words": "have,want,recommend,book,genre,fiction,non fiction, category, type",
 		"slots": ["genre"],
-		"next_action": [""]
+		"pre_next_action_msg": "",
+		"next_action_func": "find_book_details"
 	},
 	"recommend_book_by_author_intent": {
 		"match_words": "have,want,recommend,book,authors,author,writer,write",
-		"slots": ["authors"]
+		"slots": ["authors"],
+		"pre_next_action_msg": "",
+		"next_action_func": "find_book_details"
 	}
 } 
