@@ -1,5 +1,21 @@
-# nli_chatbot
-This chatbot implementation is the trial for understanding Natural Langauge Processing (NLP) and also including the interactive talking part. It is implemented based on the idea of BookBot which is able to recommend users for books by genre, title or author name.
+# nli_chatbot 
+This chatbot implementation is the trial for understanding Natural Langauge Processing (NLP) and also including the interactive talking part. It is implemented based on the idea of BookBot which is able to recommend books to users by genre, title or author name. The simple greetings part are also implemented.
+
+After runing the project, user can wake the BookBot up by saying 'hi' or 'hello' (See the list of wake up words in agent.py then the BookBot will be ready to talk. 
+
+User can simply ask the bot to recommend the books by saying 'recommend me a book' and BookBot will ask if user want him to recommend by genre or author. User also can tell the bot to 'find the book /bookname/' then BookBot will find the book information for user.
+
+Example conversation:
+**User**: Hello
+**BookBot**: Hi, would you like me to find any books for reading today? I can recommend books for your by genre, title, authors of find book for you.
+User
+**User**: Recommend me some books 
+**BootBot**: Would you like me to recommend by genre or author?
+**User**: The author name's JK Rowling
+**BootBot**: /BookBot gives you a book information/. Would you like me to find more information?
+**User**: Yes, please
+**BootBot**: I found /BookBot gives you more books' information/
+
 
 # Features and Integrations
 
@@ -7,6 +23,7 @@ This chatbot implementation is the trial for understanding Natural Langauge Proc
 ## Speech to Text (STT) and Text to Speech (TTS)
 * The integration for STT has done by using speech_recognition package. See package stt.
 * The integration for TTS has done by using pyttsx3 package. See package tts.
+
 
 # How can it understand what users said
 
