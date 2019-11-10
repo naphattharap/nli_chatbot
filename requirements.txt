@@ -1,7 +1,6 @@
 SpeechRecognition==3.8.1
 spacy==2.0.18
 IPython=-7.2.0
-nltk==3.4
 pyttsx3=3.2.7
 pyobjc==5.1.2
 PyAudio==0.2.11
