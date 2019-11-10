@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 from abc import abstractmethod
 import logging
 
@@ -21,15 +27,18 @@ class SpeechRecognizer:
     def __init__(self):
         pass
 
-    def init_recognizer(self, recognizer_name):
+    def init_recognizer(self, recognizer_name, language_code):
         if recognizer_name == "" or recognizer_name == config.STT_GOOGLE:
-            return GoogleRecognizer()
+            return GoogleRecognizer(language_code)
         else:
             logging.warning("recognizer for {} is not implemented yet".format(
                 recognizer_name))
 
 
 class SpeechRecognizerABC:
+
+    def __init__(self, language_code):
+        self.LANGUAGE_CODE = language_code
 
     @abstractmethod
     def listen(self):
@@ -41,7 +50,7 @@ class GoogleRecognizer(SpeechRecognizerABC):
     wait_timeout_sec = 15
 
     def listen(self):
-        logging.debug("listening...")
+        logging.debug("ฺBot is listening...")
         recognizer = sr.Recognizer()
 
         with sr.Microphone() as source:
@@ -49,8 +58,8 @@ class GoogleRecognizer(SpeechRecognizerABC):
 
         try:
             speech = recognizer.recognize_google(audio,
-                                                 language=config.DEFAULT_LANGUAGE_CODE)
-            logging.debug("You said: " + speech)
+                                                 language=config.LANGUAGE_CODE)
+            logging.debug(" You said>> " + speech)
             try:
                 return speech
             except TypeError:

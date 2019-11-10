@@ -1,6 +1,13 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import json
 import logging
 import random
+import config
 from ontology.sparql import QueryManager
 #  pip install ipython
 logging.getLogger().setLevel(logging.DEBUG)
@@ -13,8 +20,9 @@ class DialogueManager:
         self.query = QueryManager();
         
     def read_templates(self):
-            template_sentences = []
-            with open('contents/da_templates.json') as f:
+            # template_sentences = []
+            # 'contents/da_templates.json'
+            with open(config.DIALOGUE_TEMPLATE_PATH) as f:
                 template_sentences = json.load(f)
                 if logging.getLogger().isEnabledFor(logging.DEBUG):
                     for d in template_sentences:
@@ -24,43 +32,6 @@ class DialogueManager:
     def get_respond_message(self, respond_msg_key):
         messages = self.template_sentences[respond_msg_key]
         return random.choice(messages)
-        
-    def get_respond_message_with_params(self, respond_msg_key, params):
-        messages = self.template_sentences[respond_msg_key]
-        n_msgs = len(messages)
-        msg = ""
-        if isinstance(messages, list) and n_msgs > 1:
-            rand_num = random.randint(0, n_msgs - 1)
-            msg = messages[rand_num]
-        else:
-            msg = messages[0]
-        
-        for index, value in params.items():
-            msg = msg.replace("{" + str(index) + "}", value)
-        
-        return msg
-    
-    def get_respond_messages_books(self, respond_msg_key, params):
-        """
-        param is array of dictionary object {title, authors, genre, description, price}
-        """
-        if len(params) == 3:
-            # result from ontology
-            respond_msg_key = respond_msg_key + "_ontology"
-            messages = self.template_sentences[respond_msg_key]
-        
-        n_msgs = len(messages)
-        msg = ""
-        if isinstance(messages, list) and n_msgs > 1:
-            rand_num = random.randint(0, n_msgs - 1)
-            msg = messages[rand_num]
-        else:
-            msg = messages[0]
-        
-        for index, value in params.items():
-            msg = msg.replace("{" + str(index) + "}", value)
-        
-        return msg
     
     def get_respond_recommend_books_by_author(self, respond_msg_key, author, books):
         """
@@ -142,7 +113,40 @@ class DialogueManager:
         else:
             resp_msg = "sorry I don't understand this."
         return resp_msg
-    
+
+    def get_respond_find_book_details(self, respond_msg_key, books):
+        """
+        param is array of dictionary object {title, authors, genre, description, price}
+        """
+#         book_titles = []
+#         for book in books:
+#             book_titles.append(book["title"])
+# 
+#         str_books = ",".join(book_titles)
+        book = {}
+        if len(books) == 0:
+            return ""
+        if len(books) > 0:
+            book = books[0]
+
+        messages = self.template_sentences[respond_msg_key + "_" + book["source"]]
+        template = random.choice(messages)
+        if template != "":
+            resp_msg = template.replace("{authors}", book["authors"]).replace("{title}", book["title"]).replace("{genre}", book["genre"])
+            if book["description"] != "":
+                resp_msg = resp_msg.replace("{description}", book["description"])
+            else:
+                resp_msg = resp_msg.replace("{description}", "no information")
+            
+            if book["price"] != "":
+                resp_msg = resp_msg.replace("{price}", book["price"])
+            else:
+                resp_msg = resp_msg.replace("{price}", "no information")
+        
+        else:
+            resp_msg = "sorry I don't understand this."
+        return resp_msg
+  
     def execute_intent(self, req_da):
         logging.debug("executing...%s", req_da)
         intent_key = req_da["intent"]
@@ -172,4 +176,15 @@ class DialogueManager:
             title = slots["title"]
             dict_results = self.query.find_book_by_title_intent(title, find_max_results)
             return self.get_respond_find_books(default_res_key, dict_results)
+    
+    def execute_action(self, req_params):
+        logging.debug("executing...%s", req_params)
+        
+        action_func = req_params["next_action_func"]
+        slots = req_params["slots"]
+        
+        default_res_key = "response_" + action_func
+        if action_func == "find_book_details":
+            dict_results = self.query.find_book_details(slots, max_result=1)
+            return self.get_respond_find_book_details(default_res_key, dict_results)
 
