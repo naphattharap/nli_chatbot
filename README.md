@@ -58,6 +58,8 @@ In this project, you can learn example queries of SPARQL to query information on
 When the sentence spoke by users are analyzed for the intents, the BookBot will search for books according to the intent in Ontology first, incase the book is not found, Google API for searching books will be called.
 
 
+
+** Message from me***
 I hope this project would help you to understand how Natural Language Processing, SparQL, Ontology, Machine Learning, Speech to Text, Text to Speech work together. There are a lot of thing can be improved to make it works smoother. Feel free to clone and modify it to have your own chatbot version :D
 
 
