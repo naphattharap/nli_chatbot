@@ -63,7 +63,7 @@ class ChatBotAgent:
 
     def start(self):
         # Better to move below hardcode to configuration files
-        wakeup_words = ["hi", "hello", "hey", "hey bot", "hey book bot", "hey bookbot", "bookbot", "hey sweetheart", "hey honey", "hey darling"]
+        wakeup_words = ["hi", "hello", "hey", "hey bot", "hey book bot", "hey bookbot", "bookbot"]
         end_converstion_words = ["bye", "bye bye", "goodbye", "see you"]
         greeting_msg = "Hello, how may I help you?"
         goodbye_msg = "Hope to see you again soon, bye."
