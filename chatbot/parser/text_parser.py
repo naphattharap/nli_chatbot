@@ -1,7 +1,13 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import json
 import logging
 import spacy
-
+import config
 logging.getLogger("TextParser").setLevel(logging.DEBUG)
 
 
@@ -10,10 +16,11 @@ class TextParser():
     Inferring the intent of speech.
     """
 
-    def __init__(self):
+    def __init__(self, intent_path=config.PATH_INTENT):
         # load only once when parser is initialized.
         self.nlp = spacy.load('en_core_web_sm')
-        self.intents = self.read_intent()
+        self.intents = self.read_intent(intent_path)
+        # If there is NER for book genre, title and author, below settings can be skipped.
         self.books_genre = ["action and adventure", "alternate history", "anthology", "art",
                             "autobiography", "biography", "book review", "chick lit",
                             "children's literature", "classic", "comic book", "comics",
@@ -42,11 +49,8 @@ class TextParser():
                              "jrr tolkien", "lucia", "berlin", "marie kondo", "maya angelou", "virginia woolf",
                              "william goldman", "yaser", "mostafa", "yaser mostafa", "zadie smith"]
         
-    def read_intent(self):
-        intents_data = []
-        # with open('chatbot/parser/intents_with_slots.json') as f:
-        # with open('chatbot/parser/intents.json') as f:
-        with open('intents_with_slots.json') as f:
+    def read_intent(self, intent_path):
+        with open(intent_path) as f:
             intents_data = json.load(f)
             if logging.getLogger().isEnabledFor(logging.DEBUG):
                 for d in intents_data:
@@ -71,14 +75,14 @@ class TextParser():
         return ""
 
     def array_contains(self, token, array):
-        for str in array:
-            if token in str:
+        for text in array:
+            if token in text:
                 return True
 
     def array_contain_str(self, array, word):
-        for str in array:
-            if word in str:
-                return str
+        for text in array:
+            if word in text:
+                return text
 
     def get_label_token(self, label, w):
         if label == 'title':
@@ -128,16 +132,7 @@ class TextParser():
                 target_intent = intent
                 max_matched_word = len_matched
         
-#         if max_matched_word >= 2:
-#             intent = self.intents[target_intent]
-#             
-#         else:
-#             intent = ""
-#             target_intent = ""
-        
-        logging.debug("intent %s", target_intent) 
-        # print("sentence: ", sentence, " \ntarget intent: ", target_intent, " \nsimilarity score: ", similarity_score)
-        print("target intent", target_intent)
+        logging.debug("target intent %s", target_intent) 
         return self.intents[target_intent], target_intent
     
     def get_main_words(self, doc):
@@ -260,10 +255,3 @@ class TextParser():
         else: 
             return ""
 
-
-t = TextParser()
-sentence = "book by title animal farm"
-intent_obj, target_intent, max_match_word = t.get_infer_intent(sentence)
-print(target_intent)
-slots = intent_obj["slots"]
-t.get_auto_fill_slots(sentence, slots)

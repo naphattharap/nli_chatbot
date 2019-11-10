@@ -1,8 +1,14 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import logging
 
 from rdflib.graph import Graph
 from ext_client.google_client import GoogleBookApiService
-
+import config
 logging.getLogger().setLevel(logging.DEBUG)
 
 '''
@@ -15,10 +21,10 @@ class QueryManager:
     Query manager constructs SPARQL for each intent
     '''
 
-    def __init__(self):
+    def __init__(self, ontology_path=config.PATH_ONTOLOGY):
         # ontology and instances information are in this file
         self.g = Graph()
-        self.g.parse("ontology/ontology.owl")
+        self.g.parse(ontology_path)
         # self.g.serialize(format="n3")
         self.book_ontology_prefix = " PREFIX nli: <http://www.semanticweb.org/jessie/ontologies/2018/10/Books#> "
         self.goole_api = GoogleBookApiService()
@@ -163,18 +169,4 @@ class QueryManager:
         
         logging.debug(results) 
         return results
-    
-# q = QueryManager()       
-# print()
-# print("------------------------")
-# q.recommend_book_by_genre_intent("Fiction",5)
-# print()
-# print("------------------------")
-# q.recommend_book_by_author_intent("Rowling", 5)
-# print()
-# print("------------------------")
-# q.find_book_by_author_intent("Yaser", 1)
-# print()
-# print("------------------------")
-# q.find_book_by_title_intent("Clean", 1)
 

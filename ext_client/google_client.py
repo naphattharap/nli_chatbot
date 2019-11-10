@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import json
 import urllib.request
 import logging
@@ -51,9 +57,9 @@ class GoogleBookApiService:
             
             if 'categories' in volumn_info:
                 if len(volumn_info["categories"]) > 0:
-                        book["genre"] = ",".join(volumn_info["categories"])
+                    book["genre"] = ",".join(volumn_info["categories"])
                 else:
-                        book["genre"] = volumn_info["categories"]
+                    book["genre"] = volumn_info["categories"]
             else:
                 book["genre"] = ""
             
@@ -105,9 +111,9 @@ class GoogleBookApiService:
             
             if 'categories' in volumn_info:
                 if len(volumn_info["categories"]) > 0:
-                        book["genre"] = ",".join(volumn_info["categories"])
+                    book["genre"] = ",".join(volumn_info["categories"])
                 else:
-                        book["genre"] = volumn_info["categories"]
+                    book["genre"] = volumn_info["categories"]
             else:
                 book["genre"] = ""
             
@@ -155,7 +161,4 @@ class GoogleBookApiService:
         base_api_link = "https://www.googleapis.com/books/v1/volumes?q=" + key + "&maxResults=" + str(max_result)
         book_list = self.get_json_respond_book_detail(base_api_link)
         return book_list      
-# googleBook = GoogleBookApiService() 
-# googleBook.google_book_by_title_intent("Harry Potter", 5)
-# googleBook.google_book_by_genre_intent("Fiction", 5)
-# googleBook.google_book_by_author_intent("Rowling", 5)
+

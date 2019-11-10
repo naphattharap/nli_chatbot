@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import logging
 # Internal library
 import subprocess
@@ -55,7 +61,7 @@ class Pyttsx3Agent(SpeechAgentABC):
         voice = voices[0]
         voice.age = 5
         self.engine.setProperty("voice", config.SPEAKER_VOICE_NAME)
-        voice.languages[0] = config.DEFAULT_LANGUAGE_CODE
+        voice.languages[0] = config.LANGUAGE_CODE
 
     def speak(self, text):
         print("Bot said: {}".format(text))
@@ -83,7 +89,6 @@ class OsxSubProcess:
     def speak(self, text):
         subprocess.call('say ' + text, shell=True)
         print(config.chatbot_name + " said: {}".format(text))
-
 
 # class ESpeak(SpeechAgentABC):
 # 

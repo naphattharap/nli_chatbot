@@ -1,20 +1,22 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import logging
 import gc
-
-# from nltk.parse.featurechart import sent
 
 from chatbot.parser.text_parser import TextParser
 from chatbot.stt.speech_recognizer import SpeechRecognizer
 from chatbot.tts.speech_agent import SpeechAgent
 import config
-from dialogue_act.dialogue_act import DialogueAct
-from dialogue_act.dialogue_manager import DialogueManager
+from dialogue.dialogue_act import DialogueAct
+from dialogue.dialogue_manager import DialogueManager
 
 logging.getLogger().setLevel(logging.DEBUG)
 
 
-# from dialogue_act.dialogue_manager import DialogueManager
-# from dialogue_act.dialogue_mgt import DialogueActManager
 class ChatBotAgent:
 
     def __init__(self):
@@ -32,7 +34,7 @@ class ChatBotAgent:
         self.has_woken_up = False
 
     def init_agents(self):
-        self.stt = SpeechRecognizer().init_recognizer(config.STT_GOOGLE)
+        self.stt = SpeechRecognizer().init_recognizer(config.STT_GOOGLE, config.LANGUAGE_CODE)
         self.tts = SpeechAgent().init_agent(config.TTS_PYTTSX3)
         return self.stt, self.tts
 
@@ -60,15 +62,15 @@ class ChatBotAgent:
         return ""
 
     def start(self):
-        # instance initialization
-        # bot = ChatBotAgent()
-        # dmngr = DialogueManager()
-
+        # Better to move below hardcode to configuration files
         wakeup_words = ["hi", "hello", "hey", "hey bot", "hey book bot", "hey bookbot", "bookbot", "hey sweetheart", "hey honey", "hey darling"]
         end_converstion_words = ["bye", "bye bye", "goodbye", "see you"]
-        greeting = False
         greeting_msg = "Hello, how may I help you?"
         goodbye_msg = "Hope to see you again soon, bye."
+        
+        # Flag for greeting state
+        greeting = False
+        idle_state = True
         
         # service name
         current_intent = {}
@@ -81,12 +83,13 @@ class ChatBotAgent:
         target_intent = ""
         # constant to control key
         default_cannot_extract_intent_key = "default_unrecognize_intent"
-        logging.debug("Now book bot is ready, please wake him up for talking")
+        logging.debug("Now book bot is ready, please wake him up by saying hi to him")
+        
         while True:
             try:
-#                 if  greeting == False:
-#                     self.speaker.speak(greeting_msg)
-#                     greeting = True
+                if  greeting == False and idle_state == False:
+                    self.speaker.speak(greeting_msg)
+                    greeting = True
  
                 # Listen voice from microphone and generate sentence.
                 sentence = self.listener.listen()
@@ -97,26 +100,25 @@ class ChatBotAgent:
                     response_msg = self.d_manager.get_respond_message("response_greeting")
                     self.speaker.speak(response_msg)
                     self.has_woken_up = True
+                    idle_state = False
+                    greeting = True
                     continue
-                # recommend by author
-                # sentence = "Do you have any recommended books written by Mostafa"
                 
-                # recommend by genre
-                # sentence = "I would like to read books about psychology, do you have any recommendation"
-                # recommend by genre
-                # sentence = "Do you have any recommended books in psychological category"
-                # find book by title
-                # sentence = "Give me information about Harry Potter"
-                # find book by author via google api
-                # sentence = "Give me a book from Yaser Mostafa"
-                
-                # find book by author via ontology
-                # sentence = "Give me a book from Yaser"
-                
-                # Check sentence with trained model for dialogue act.
-                # self.speaker.speak("user asked: " + sentence)
-                da_result = self.da.predict(sentence);
-                print("DA type --> ", da_result)
+                elif sentence in end_converstion_words:
+                    response_msg = self.d_manager.get_respond_message("response_bye")
+                    self.speaker.speak(response_msg)
+                    self.has_woken_up = False
+                    greeting = False
+                    self.reset_session()
+                    current_intent = {}
+                    current_action = ""
+                    n_slots = 0
+                    current_idx_slot = 0
+                    idle_state = True
+                    continue
+
+                da_result = self.da.predict(sentence)
+                logging.debug("Predicted dialog type %s ", da_result)
                                 # If type is end of conversation, stop program.
                 
                 if da_result == "Bye":  # and not is_flling_in_slot_action:
@@ -147,13 +149,9 @@ class ChatBotAgent:
                         self.speaker.speak(response_msg)
                         self.reset_session()
                 else:
-                # elif da_result == "whQuestion" or da_result == "ynQuestion" or da_result == "Statement" or da_result == "nAnswer" or da_result == "yAnswer" or da_result == "Continuer" or da_result == "Clarify":
                     # Analyze entity in question find subject, predicate, object
                     # Query in ontology by SPARQL 
-                    # Generate sentence
-                    # parser.get_dependency_parsing(sentence)
-                    # parser.generate_response(sentence)
-                    
+
                     is_flling_in_slot_action = 'current_action' in self.session and self.session["current_action"] == "fill_slot"
                     if is_flling_in_slot_action:
                         # fill slot from sentence
@@ -227,14 +225,9 @@ class ChatBotAgent:
                     respond_message = self.d_manager.get_respond_message(default_cannot_extract_intent_key)
                     self.speaker.speak(respond_message)
                     continue
-                # Problem, when there is no voice come, it returns error.
-                # So we handle by continue
-                # Continue next loop if Error is returned.
-                    
-                # response_msg = da.respond(sentence)
-                # Call dialogue management and speak
-#               # reply_message = dmngr.process(sentence)
-                # speaker.speak(response_msg)
+                    # Problem, when there is no voice come, it returns error.
+                    # So we handle by continue
+                    # Continue next loop if Error is returned.
 
             except SystemExit:
                 print("ignoring SystemExit")

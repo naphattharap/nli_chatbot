@@ -1,6 +1,13 @@
+#!/usr/bin/env python
+__author__ = "Naphatthara P."
+__version__ = "1.0.0"
+__email__ = "naphatthara.p@gmail.com"
+__status__ = "Prototype"
+
 import json
 import logging
 import random
+import config
 from ontology.sparql import QueryManager
 #  pip install ipython
 logging.getLogger().setLevel(logging.DEBUG)
@@ -14,7 +21,8 @@ class DialogueManager:
         
     def read_templates(self):
             # template_sentences = []
-            with open('contents/da_templates.json') as f:
+            # 'contents/da_templates.json'
+            with open(config.DIALOGUE_TEMPLATE_PATH) as f:
                 template_sentences = json.load(f)
                 if logging.getLogger().isEnabledFor(logging.DEBUG):
                     for d in template_sentences:
@@ -24,43 +32,6 @@ class DialogueManager:
     def get_respond_message(self, respond_msg_key):
         messages = self.template_sentences[respond_msg_key]
         return random.choice(messages)
-        
-#     def get_respond_message_with_params(self, respond_msg_key, params):
-#         messages = self.template_sentences[respond_msg_key]
-#         n_msgs = len(messages)
-#         msg = ""
-#         if isinstance(messages, list) and n_msgs > 1:
-#             rand_num = random.randint(0, n_msgs - 1)
-#             msg = messages[rand_num]
-#         else:
-#             msg = messages[0]
-#         
-#         for index, value in params.items():
-#             msg = msg.replace("{" + str(index) + "}", value)
-#         
-#         return msg
-    
-#     def get_respond_messages_books(self, respond_msg_key, params):
-#         """
-#         param is array of dictionary object {title, authors, genre, description, price}
-#         """
-#         if len(params) == 3:
-#             # result from ontology
-#             respond_msg_key = respond_msg_key + "_ontology"
-#             messages = self.template_sentences[respond_msg_key]
-#         
-#         n_msgs = len(messages)
-#         msg = ""
-#         if isinstance(messages, list) and n_msgs > 1:
-#             rand_num = random.randint(0, n_msgs - 1)
-#             msg = messages[rand_num]
-#         else:
-#             msg = messages[0]
-#         
-#         for index, value in params.items():
-#             msg = msg.replace("{" + str(index) + "}", value)
-#         
-#         return msg
     
     def get_respond_recommend_books_by_author(self, respond_msg_key, author, books):
         """
