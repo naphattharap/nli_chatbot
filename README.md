@@ -1,4 +1,7 @@
 # nli_chatbot
-This implementation hasn't finished updating yet, to be continued later.
-My intention is to finish all architecture of Natural Language Interaction as pilot project.
-The description and delopment guideline will be provided.
+This chatbot implementation is the trial for understanding Natural Langauge Processing (NLP) and also including the interactive talking part.
+
+
+The source code includes:
+* The integration for Speech to Text (STT) by using speech_recognition package.
+* The integration for Text to Speech by using pyttsx3 package.
