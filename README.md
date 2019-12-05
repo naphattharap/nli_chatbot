@@ -17,11 +17,11 @@ Example conversation:
 
 **User**: The author name's JK Rowling
 
-**BootBot**: /BookBot gives you a book information/. Would you like me to find more information?
+**BookBot**: /BookBot gives you a book information/. Would you like me to find more information?
 
 **User**: Yes, please
 
-**BootBot**: I found /BookBot gives you more books' information/
+**BookBot**: I found /BookBot gives you more books' information/
 
 
 # Features and Integrations
