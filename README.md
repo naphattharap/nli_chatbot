@@ -17,7 +17,7 @@ Example conversation:
 
 **User**: The author name's JK Rowling
 
-**BookBot**: /BookBot gives you a book information/. Would you like me to find more information?
+**BookBot**:  (It gives you a book information) Would you like me to find more information?
 
 **User**: Yes, please
 
